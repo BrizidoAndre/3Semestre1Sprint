@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 
 export default function App() {
   return (
@@ -34,6 +34,7 @@ export default function App() {
           Entrar
         </Text>
       </TouchableHighlight>
+
 
 
 
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   input: {
     borderColor: '#000000',
     borderWidth: 2,
-    padding:5,
+    padding:7,
     borderRadius:4,
     width:250,
     marginTop:10,
