@@ -4,7 +4,13 @@ import { Image, StyleSheet, Text, TextInput, TouchableHighlight, View } from 're
 export default function App() {
   return (
     <View style={styles.container}>
-      <Image style={styles.poke} source={require('./src/assets/img/depositphotos_116786710-stock-photo-volumetric-image-pokeball-on-a.png')} />
+      
+
+      <View style={styles.poke} source={require('./src/assets/img/depositphotos_116786710-stock-photo-volumetric-image-pokeball-on-a.png')} />
+      <View style={styles.line} />
+
+      <View/>
+
 
       <Text style={styles.title}>Login</Text>
 
@@ -18,7 +24,7 @@ export default function App() {
         <Text style={styles.label}>Senha</Text>
         <TextInput
           style={styles.input}
-          keyboardType='visible-password'
+          secureTextEntry={true}
           placeholder='Digite sua senha' />
         </View>
       </View>
@@ -46,6 +52,27 @@ const styles = StyleSheet.create({
   poke: {
     width: 100,
     height: 100,
+    borderColor:'black',
+    borderWidth:10,
+    borderRadius:50,
+    
+    backgroundColor:"#ffffff",
+    zIndex:1,
+    
+    position:'absolute',
+    top:50
+  },
+  line:{
+    width:1000,
+    height:105,
+    backgroundColor:"red",
+    borderTopColor:"white",
+    borderBottomColor:"black",
+    borderWidth:6,
+    position:"absolute",
+
+    top:-6,
+
   },
   title: {
     fontSize: 30,
@@ -62,20 +89,29 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
   },
-  btn: {
-    backgroundColor: 'red',
-    borderColor: '#000000',
-    borderWidth: 2,
-    borderRadius: 6,
-    width: 80,
-  },
   input: {
     borderColor: '#000000',
     borderWidth: 2,
     padding:5,
+    borderRadius:4,
+    width:250,
+    marginTop:10,
+  },
+  btn: {
+    backgroundColor: 'red',
+    borderColor: '#000000',
+    borderWidth: 2,
+    borderRadius: 8,
+    width: 120,
+    height:50,
+
+    display:'flex',
+    justifyContent:'center',
+    alignContent:'center',
+
   },
   flexInputs: {
     display: "flex",
-    gap: 10,
+    gap: 20,
   }
 });
