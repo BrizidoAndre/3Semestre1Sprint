@@ -1,4 +1,6 @@
-export function Input({
+import { InputE } from "./style";
+
+export function InputEx({
     placeholder,
     editable,
     fieldValue,
@@ -8,11 +10,14 @@ export function Input({
 }) {
     return (
         <>
-            <InputText
+            <InputE
                 placeholder={placeholder}
                 editable={editable}
                 keyboardType={KeyType}
                 maxLenght={maxLenght}
+                value = {fieldValue}
+                onchangeText = {onchangeText}
+
             />
         </>
     )
