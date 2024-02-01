@@ -4,12 +4,19 @@ import { Header } from './src/components/header';
 import { Container } from './src/components/container/container';
 import { Input, InputEstado, InputUF } from './src/components/input/input';
 import { Label } from './src/components/labelinput/labelinput';
-import { InputContainer } from './src/components/inputContainer/inputContainer';
+import { InputContainer, InputPersonalContainer } from './src/components/inputContainer/inputContainer';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { InputPersonalContainer } from './src/components/inputPersonalContainer/inputPersonalContainer';
+import { useEffect, useState } from 'react';
 
 export default function App() {
 
+  useEffect(()=>{
+
+  },[])
+
+  
+  const [endereco, setEndereco] = useState("");
+  
 
   let [fontsLoaded, fontError] = useFonts({
     Roboto_400Regular
@@ -28,7 +35,11 @@ export default function App() {
 
           <InputContainer>
             <Label>Informar CEP:</Label>
-            <Input placeholder="XXXXXX-XX"></Input>
+            <Input 
+            value={endereco} 
+            onChangeText={setEndereco} 
+            placeholder="XXXXXX-XX"
+            keyboardType="numeric"></Input>
           </InputContainer>
 
           <InputContainer>
@@ -63,7 +74,7 @@ export default function App() {
 
           <StatusBar style="auto" />
         </Container>
-      </KeyboardAwareScrollView>
+      </KeyboardAwareScrollView >
 
     </>
 
