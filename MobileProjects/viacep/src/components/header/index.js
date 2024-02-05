@@ -5,7 +5,7 @@ export function Header(){
     return(
         <TitleContainer>
             <SafeArea>
-                <AppTitle>Consumo da API ViaCep</AppTitle>
+                <AppTitle>VIA CEP</AppTitle>
             </SafeArea>
         </TitleContainer>
     )

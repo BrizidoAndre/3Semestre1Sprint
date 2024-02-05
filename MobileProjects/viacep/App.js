@@ -28,8 +28,7 @@ export default function App() {
   async function loadAdress() {
     try {
 
-      let response = await (api.get(`${CEP}.json`))
-
+      let response = await (api.get(`${CEP}/json`))
       const data = (await response).data
 
       if(data.erro == true){
@@ -44,6 +43,10 @@ export default function App() {
         setEstado(estado);
       }
     } catch (error) {
+      if(CEP.length != 8){
+        alert("CEP Inválido")
+        return
+      }
       alert(error)
     }
   }

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const viaCepUri = `https://opencep.com/v1/`;
+const viaCepUri = `https://viacep.com.br/ws/`;
 
 const api = axios.create({ 
     baseURL: viaCepUri

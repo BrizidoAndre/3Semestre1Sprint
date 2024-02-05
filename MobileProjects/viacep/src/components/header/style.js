@@ -21,8 +21,10 @@ margin-top: 45px;
 `
 
 export const AppTitle = styled.Text`
-color: black;
+color: #FECC2B;
 font-family: "Roboto_400Regular";
 font-size: 24px;
 text-align: center;
+
+background-color: #010f35;
 `
