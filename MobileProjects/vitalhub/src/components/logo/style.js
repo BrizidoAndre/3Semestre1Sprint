@@ -5,5 +5,5 @@ export const Logo = styled.Image`
     height: 120px;
     
     align-self:center;
-    margin: 20px 0;
+    margin: 50px 0;
 `

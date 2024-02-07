@@ -6,8 +6,12 @@ import ForgotPassword from './src/screens/forgotPassword/forgotPassword';
 
 // import da fonts
 import { useFonts,
+  MontserratAlternates_700Bold,
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium } from '@expo-google-fonts/montserrat-alternates';
+import CheckEmail from './src/screens/checkEmail/checkEmail';
+import RedefinePassword from './src/screens/redefinePassword/redefinePassword';
+import CreateAccount from './src/screens/createAccount/createAccount';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -15,6 +19,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   const [fontsLoaded, fontsError] = useFonts({
+    MontserratAlternates_700Bold,
     MontserratAlternates_600SemiBold,
     MontserratAlternates_500Medium
   })
@@ -34,7 +39,7 @@ export default function App() {
     
       <NavigationContainer>
         {/* componente para navegação */}
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown:false}}>
 
           {/* tela Login */}
           <Stack.Screen
@@ -63,6 +68,32 @@ export default function App() {
             component={ForgotPassword}
 
             options={ {title: "Forgot Password"}}
+            />
+
+            <Stack.Screen
+
+            name="CheckEmail"
+
+            component={CheckEmail}
+
+            options={ {title: "Check Email"}}
+            />
+
+            <Stack.Screen
+            
+            name='RedefinePassword'
+
+            component={RedefinePassword}
+
+            options={{title: "Redefine Passord"}}
+            
+            />
+
+            <Stack.Screen 
+            
+            name='CreateAccount'
+
+            component={CreateAccount}
             />
 
         </Stack.Navigator>
