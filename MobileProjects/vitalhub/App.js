@@ -8,10 +8,12 @@ import ForgotPassword from './src/screens/forgotPassword/forgotPassword';
 import { useFonts,
   MontserratAlternates_700Bold,
   MontserratAlternates_600SemiBold,
-  MontserratAlternates_500Medium } from '@expo-google-fonts/montserrat-alternates';
+  MontserratAlternates_500Medium} from '@expo-google-fonts/montserrat-alternates';
+import { Quicksand_600SemiBold, Quicksand_700Bold} from '@expo-google-fonts/quicksand'
 import CheckEmail from './src/screens/checkEmail/checkEmail';
 import RedefinePassword from './src/screens/redefinePassword/redefinePassword';
 import CreateAccount from './src/screens/createAccount/createAccount';
+import Profile from './src/screens/profile/profile';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -21,7 +23,9 @@ export default function App() {
   const [fontsLoaded, fontsError] = useFonts({
     MontserratAlternates_700Bold,
     MontserratAlternates_600SemiBold,
-    MontserratAlternates_500Medium
+    MontserratAlternates_500Medium,
+    Quicksand_600SemiBold,
+    Quicksand_700Bold
   })
 
   if (!fontsLoaded && !fontsError) {
@@ -41,15 +45,6 @@ export default function App() {
         {/* componente para navegação */}
         <Stack.Navigator screenOptions={{headerShown:false}}>
 
-          {/* tela Login */}
-          <Stack.Screen
-            // navegação
-            name='Login'
-            // componente que será chamado
-            component={Login}
-            // título da tela
-            options={{ title: "Login" }} />
-
           {/* tela */}
           <Stack.Screen
             // navegação
@@ -59,14 +54,19 @@ export default function App() {
             // título da tela
             options={{ title: "Navegação" }} />
 
+          {/* tela Login */}
+          <Stack.Screen
+            // navegação
+            name='Login'
+            // componente que será chamado
+            component={Login}
+            // título da tela
+            options={{ title: "Login" }} />
 
             {/* recuperar senha */}
             <Stack.Screen
-
             name='ForgotPassword'
-
             component={ForgotPassword}
-
             options={ {title: "Forgot Password"}}
             />
 
@@ -94,6 +94,12 @@ export default function App() {
             name='CreateAccount'
 
             component={CreateAccount}
+            />
+
+            <Stack.Screen 
+            name='User Profile'
+
+            component={Profile}
             />
 
         </Stack.Navigator>

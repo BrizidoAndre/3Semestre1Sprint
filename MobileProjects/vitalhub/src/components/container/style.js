@@ -21,7 +21,6 @@ gap: 10px;
 
 width: 100%;
 
-margin-top: 20px;
 margin-bottom: 30px;
 
 `
@@ -34,4 +33,26 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
+`
+
+export const ImageContainer = styled.View`
+    width: 100%;
+    height: 40%;
+
+    position: fixed;
+    top: 0px;
+`
+
+export const TwoInputContainer = styled.View`
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom:20px;
+`
+
+export const SmallInputLabelContainer = styled.View`
+    width: 45%;
 `

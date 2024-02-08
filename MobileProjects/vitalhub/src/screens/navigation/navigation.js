@@ -10,6 +10,10 @@ const Navigation = ( {navigation} ) => {
             <Button
             title="Forgot the password"
             onPress={() => navigation.navigate("ForgotPassword")}/>
+
+            <Button
+            title="User Profile"
+            onPress={() => navigation.navigate("User Profile")}/>
         </View>
     );
 }

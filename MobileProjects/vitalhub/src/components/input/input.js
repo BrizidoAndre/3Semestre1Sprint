@@ -29,3 +29,17 @@ export const InputNumber = styled.TextInput.attrs({
     color: #34898F;
     font-size:40px;
 `
+
+
+export const InputBlack = styled.TextInput.attrs({
+    placeholderTextColor: '#000000'
+})`
+    width: 100%;
+    height: 55px;
+    border-radius: 5px;
+    background-color:#e5e3e3;
+    padding: 16px;
+
+    font-family: MontserratAlternates_500Medium;
+    font-size:14px;
+`
