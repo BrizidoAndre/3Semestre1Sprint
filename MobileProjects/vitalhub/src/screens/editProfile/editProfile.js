@@ -1,24 +1,27 @@
-
-import { Container, InputContainer, LabelInputContainer, TwoInputContainer } from "../../components/container/style"
-import { ImageModal } from "../../components/modal/modal"
-import { SubTitle, Title } from "../../components/title/title"
-import { InputLabelBlack, SmallInputLabel } from "../../components/input/inputLabel"
+import { StatusBar } from "expo-status-bar"
 import { SmallButton } from "../../components/button/button"
 import { ButtonTitle } from "../../components/button/buttonTitle"
+import { Container, InputContainer, TwoInputContainer } from "../../components/container/style"
 import { HeaderImage } from "../../components/headerImage/headerImage"
-import ScrollViewProfile from "../../components/scrollViewProfile/scrollViewProfile.js"
-import EditProfile from "../editProfile/editProfile.js"
+import { InputLabel, InputLabelBlack, SmallInputLabel } from "../../components/input/inputLabel"
+import { ImageModal } from "../../components/modal/modal"
+import { IconReturn } from "../../components/navigationIcons/navigationIcons"
+import ScrollViewProfile from "../../components/scrollViewProfile/scrollViewProfile"
+import { SubTitle, Title } from "../../components/title/title"
 
-const Profile = ({ navigation }) => {
-
+const EditProfile = ({ navigation }) => {
     return (
         <Container>
+            <IconReturn navigation={navigation} />
+
             <HeaderImage requireImage={require("../../assets/img/Rectangle425.png")} />
 
-
-            <ScrollViewProfile>
+            <ImageModal>
                 <Title>Richard Kosta</Title>
                 <SubTitle>richard.kosta@email.com</SubTitle>
+            </ImageModal>
+
+            <ScrollViewProfile>
                 <Container>
 
                     <InputContainer>
@@ -33,19 +36,12 @@ const Profile = ({ navigation }) => {
                         </TwoInputContainer>
 
                     </InputContainer>
-
-                    <InputContainer>
-                        <TwoInputContainer>
-                            <SmallButton><ButtonTitle>SALVAR</ButtonTitle></SmallButton>
-                            <SmallButton onPress={() => { navigation.navigate(EditProfile) }}
-                            ><ButtonTitle>EDITAR</ButtonTitle></SmallButton>
-                        </TwoInputContainer>
-                    </InputContainer>
+                        <SmallButton><ButtonTitle>SALVAR</ButtonTitle></SmallButton>
                 </Container>
             </ScrollViewProfile>
+
         </Container>
     )
-
 }
 
-export default Profile
+export default EditProfile

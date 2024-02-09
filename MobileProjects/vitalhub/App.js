@@ -5,15 +5,20 @@ import Login from './src/screens/login/login';
 import ForgotPassword from './src/screens/forgotPassword/forgotPassword';
 
 // import da fonts
-import { useFonts,
+import {
+  useFonts,
   MontserratAlternates_700Bold,
   MontserratAlternates_600SemiBold,
-  MontserratAlternates_500Medium} from '@expo-google-fonts/montserrat-alternates';
-import { Quicksand_600SemiBold, Quicksand_700Bold} from '@expo-google-fonts/quicksand'
+  MontserratAlternates_500Medium
+} from '@expo-google-fonts/montserrat-alternates';
+import { Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand'
 import CheckEmail from './src/screens/checkEmail/checkEmail';
 import RedefinePassword from './src/screens/redefinePassword/redefinePassword';
 import CreateAccount from './src/screens/createAccount/createAccount';
 import Profile from './src/screens/profile/profile';
+import EditProfile from './src/screens/editProfile/editProfile';
+import Appointment from './src/screens/appointment/appointment';
+import EditAppointment from './src/screens/editAppointment/editAppointment';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -40,71 +45,84 @@ export default function App() {
     // stack screen
 
     // envolve a estrutura de navegação
-    
-      <NavigationContainer>
-        {/* componente para navegação */}
-        <Stack.Navigator screenOptions={{headerShown:false}}>
 
-          {/* tela */}
-          <Stack.Screen
-            // navegação
-            name='Navigation'
-            // componente que será chamado
-            component={Navigation}
-            // título da tela
-            options={{ title: "Navegação" }} />
+    <NavigationContainer>
+      {/* componente para navegação */}
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-          {/* tela Login */}
-          <Stack.Screen
-            // navegação
-            name='Login'
-            // componente que será chamado
-            component={Login}
-            // título da tela
-            options={{ title: "Login" }} />
+        {/* tela */}
+        <Stack.Screen
+          // navegação
+          name='Navigation'
+          // componente que será chamado
+          component={Navigation}
+          // título da tela
+          options={{ title: "Navegação" }} />
 
-            {/* recuperar senha */}
-            <Stack.Screen
-            name='ForgotPassword'
-            component={ForgotPassword}
-            options={ {title: "Forgot Password"}}
-            />
+        {/* tela Login */}
+        <Stack.Screen
+          // navegação
+          name='Login'
+          // componente que será chamado
+          component={Login}
+          // título da tela
+          options={{ title: "Login" }} />
 
-            <Stack.Screen
+        {/* recuperar senha */}
+        <Stack.Screen
+          name='ForgotPassword'
+          component={ForgotPassword}
+          options={{ title: "Forgot Password" }}
+        />
 
-            name="CheckEmail"
+        <Stack.Screen
 
-            component={CheckEmail}
+          name="CheckEmail"
 
-            options={ {title: "Check Email"}}
-            />
+          component={CheckEmail}
 
-            <Stack.Screen
-            
-            name='RedefinePassword'
+          options={{ title: "Check Email" }}
+        />
 
-            component={RedefinePassword}
+        <Stack.Screen
 
-            options={{title: "Redefine Passord"}}
-            
-            />
+          name='RedefinePassword'
 
-            <Stack.Screen 
-            
-            name='CreateAccount'
+          component={RedefinePassword}
 
-            component={CreateAccount}
-            />
+          options={{ title: "Redefine Passord" }}
 
-            <Stack.Screen 
-            name='User Profile'
+        />
 
-            component={Profile}
-            />
+        <Stack.Screen
 
-        </Stack.Navigator>
+          name='CreateAccount'
 
-      </NavigationContainer>
+          component={CreateAccount}
+
+          options={{ title: "Create Account" }}
+        />
+
+        <Stack.Screen
+          name='User Profile'
+          component={Profile}
+          options={{ title: "User Profile" }}
+        />
+
+        <Stack.Screen
+          name='Appointment'
+          component={Appointment}
+          options={{ title: "Appointment" }}
+        />
+
+        <Stack.Screen
+          name='EditProfile'
+          component={EditProfile}
+          options={{ title: "Edit Profile" }}
+        />
+      </Stack.Navigator>
+
+    </NavigationContainer>
 
   );
 }

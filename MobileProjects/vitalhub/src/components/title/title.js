@@ -4,6 +4,7 @@ export const Title = styled.Text`
     font-size: 20px;
     color: #33303E;
     font-family: MontserratAlternates_600SemiBold;
+    text-align: center;
     margin-bottom: 15px;
     margin-top: 10px;
 `

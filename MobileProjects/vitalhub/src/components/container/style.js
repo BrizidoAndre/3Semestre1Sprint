@@ -16,12 +16,11 @@ justify-content: space-around;
 
 export const InputContainer = styled.View`
 display: flex;
-align-items: center;
+align-items: flex-start;
 gap: 10px;
 
-width: 100%;
-
-margin-bottom: 30px;
+width: 90%;
+margin-bottom: 20px;
 
 `
 
@@ -50,7 +49,7 @@ export const TwoInputContainer = styled.View`
     flex-direction: row;
     justify-content:space-between;
     align-items: center;
-    margin-bottom:20px;
+    margin:20px 0;
 `
 
 export const SmallInputLabelContainer = styled.View`
