@@ -2,11 +2,12 @@ import { SmallButton } from "../../components/button/button"
 import { ButtonTitle } from "../../components/button/buttonTitle"
 import { Container, InputContainer, TwoInputContainer } from "../../components/container/style"
 import { HeaderImage } from "../../components/headerImage/headerImage"
-import { InputLabel } from "../../components/input/inputLabel"
+import { InputLabel, InputLabelBlack } from "../../components/input/inputLabel"
 import { IconReturn } from "../../components/navigationIcons/navigationIcons"
 import ScrollViewProfile from "../../components/scrollViewProfile/scrollViewProfile"
 import { SubTitle, Title } from "../../components/title/title"
-import EditAppointment from "./editAppointment"
+import EditAppointment from "../editAppointment/editAppointment"
+
 
 
 const Appointment = ({navigation}) => {
@@ -23,12 +24,12 @@ const Appointment = ({navigation}) => {
 
                 <Container>
                     <InputContainer>
-                        <InputLabel bigInput={true} title={"Descrição da consulta"} placeholder={"Descrição"} />
-                        <InputLabel title={"Diagnóstico do paciente"} placeholder={"Diagnóstico"} />
-                        <InputLabel bigInput={true} title={"Preescrição Médica"} placeholder={"Preescrição Médica"} />
+                        <InputLabelBlack bigInput={true} title={"Descrição da consulta"} placeholder={"Descrição"} />
+                        <InputLabelBlack title={"Diagnóstico do paciente"} placeholder={"Diagnóstico"} />
+                        <InputLabelBlack bigInput={true} title={"Preescrição Médica"} placeholder={"Preescrição Médica"} />
                     <TwoInputContainer>
                         <SmallButton><ButtonTitle>SALVAR</ButtonTitle></SmallButton>
-                        <SmallButton onClick={() => {navigation.navigate("EditAppointment")}}><ButtonTitle>EDITAR</ButtonTitle></SmallButton>
+                        <SmallButton onPress={() => {navigation.navigate("EditAppointment")}}><ButtonTitle>EDITAR</ButtonTitle></SmallButton>
                     </TwoInputContainer>
                     </InputContainer> 
                 </Container>

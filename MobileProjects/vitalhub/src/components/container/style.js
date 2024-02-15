@@ -55,3 +55,15 @@ export const TwoInputContainer = styled.View`
 export const SmallInputLabelContainer = styled.View`
     width: 45%;
 `
+
+export const RowContainer = styled.View`
+    display: flex;
+    flex-direction:row;
+    gap:10px;
+`
+
+export const HeaderTextContainer = styled.View`
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+`

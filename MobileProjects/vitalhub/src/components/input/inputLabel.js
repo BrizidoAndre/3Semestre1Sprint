@@ -1,12 +1,14 @@
 import { InputContainer, LabelInputContainer, SmallInputLabelContainer } from "../container/style"
 import { Label, Title } from "../title/title"
-import { BigInput, Input, InputBlack } from "./input"
+import { BigInput, BigInputBlack, Input, InputBlack } from "./input"
 
-export const InputLabelBlack = ({ title, placeholder }) => {
+export const InputLabelBlack = ({ title, placeholder, bigInput = false }) => {
     return (
         <>
             <Label>{title}</Label>
-            <InputBlack placeholder={placeholder} />
+            {bigInput?
+            <BigInputBlack placeholder={placeholder}/> : 
+            <InputBlack placeholder={placeholder}/>}
         </>
     )
 }

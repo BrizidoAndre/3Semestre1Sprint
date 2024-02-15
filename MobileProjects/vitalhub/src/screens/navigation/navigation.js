@@ -18,6 +18,11 @@ const Navigation = ({ navigation }) => {
             <Button
                 title="Appointment"
                 onPress={() => navigation.navigate("Appointment")} />
+
+            <Button 
+                title="Home"
+                onPress={() => navigation.navigate("Home")}
+            />
         </View>
     );
 }

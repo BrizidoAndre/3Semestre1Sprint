@@ -37,3 +37,28 @@ border: none;
 margin-bottom: 10px;
 background-color: #496BBA;
 `;
+
+export const NavButton = styled.TouchableHighlight`
+    width: 110px;
+    height: 40px;
+
+    border: 2px solid #607EC5;
+    border-radius: 5px;
+
+    display:flex;
+    justify-content: center;
+    align-items:center;
+`
+
+export const BlueNavButton = styled.TouchableHighlight`
+    width: 110px;
+    height: 40px;
+
+    background-color: #607EC5;
+    border-radius: 5px;
+
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+`

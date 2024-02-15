@@ -19,6 +19,7 @@ import Profile from './src/screens/profile/profile';
 import EditProfile from './src/screens/editProfile/editProfile';
 import Appointment from './src/screens/appointment/appointment';
 import EditAppointment from './src/screens/editAppointment/editAppointment';
+import Home from './src/screens/home/home';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -114,11 +115,22 @@ export default function App() {
           component={Appointment}
           options={{ title: "Appointment" }}
         />
+        <Stack.Screen 
+          name='EditAppointment'
+          component={EditAppointment}
+          options={{title: "EditAppointment"}}
+        />
 
         <Stack.Screen
           name='EditProfile'
           component={EditProfile}
           options={{ title: "Edit Profile" }}
+        />
+
+        <Stack.Screen
+          name='Home'
+          component={Home}
+          options={{title: 'Home'}}
         />
       </Stack.Navigator>
 

@@ -25,7 +25,7 @@ const EditAppointment = ({ navigation }) => {
                         <InputLabel title={"Diagnóstico do paciente"} placeholder={"Diagnóstico"} />
                         <InputLabel bigInput={true} title={"Preescrição Médica"} placeholder={"Preescrição Médica"} />
                     <TwoInputContainer>
-                        <SmallButton><ButtonTitle>CANCELAR</ButtonTitle></SmallButton>
+                        <SmallButton onPress={() => navigation.goBack()}><ButtonTitle>CANCELAR</ButtonTitle></SmallButton>
                         <SmallButton><ButtonTitle>SALVAR</ButtonTitle></SmallButton>
                     </TwoInputContainer>
                     </InputContainer> 
