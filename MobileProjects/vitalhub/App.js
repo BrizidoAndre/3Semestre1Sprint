@@ -11,7 +11,7 @@ import {
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
-import { Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand'
+import { Quicksand_600SemiBold, Quicksand_700Bold, Quicksand_400Regular } from '@expo-google-fonts/quicksand'
 import CheckEmail from './src/screens/checkEmail/checkEmail';
 import RedefinePassword from './src/screens/redefinePassword/redefinePassword';
 import CreateAccount from './src/screens/createAccount/createAccount';
@@ -31,7 +31,8 @@ export default function App() {
     MontserratAlternates_600SemiBold,
     MontserratAlternates_500Medium,
     Quicksand_600SemiBold,
-    Quicksand_700Bold
+    Quicksand_700Bold,
+    Quicksand_400Regular
   })
 
   if (!fontsLoaded && !fontsError) {

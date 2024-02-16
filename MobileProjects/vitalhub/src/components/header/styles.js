@@ -7,14 +7,15 @@ export const HeaderContainer = styled(LinearGradient).attrs({
     end: { x: 1, y: 0 },
 })`
     width: 100%;
-    height: 20%;
+    height: 17%;
     border-radius: 12px;
-    padding:15% 20px 10px 30px;
+    padding:15% 20px 20px 30px;
 
     display:flex;
     flex-direction: row;
     align-items: center;
     justify-content:space-between;
+    position:fixed;
 `
 
 export const PictureHeader = styled.Image`
