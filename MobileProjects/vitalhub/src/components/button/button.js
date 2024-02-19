@@ -62,3 +62,5 @@ export const BlueNavButton = styled.TouchableHighlight`
     align-items:center;
 
 `
+
+

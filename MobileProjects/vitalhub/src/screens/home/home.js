@@ -1,13 +1,15 @@
-import { useState } from "react"
-import { NavButtonTitle } from "../../components/button/buttonTitle"
-import { Container, HomeContainer, InputContainer, RowContainer, Scroll } from "../../components/container/style"
-import Header from "../../components/header/header"
-import { NavButtonComponent } from "../../components/navButton/navButton"
-import { Title } from "../../components/title/title"
-import { ScrollView } from "react-native"
-import Card from "../../components/card/card"
-
+// Import de imagens
 import image from "../../assets/img/Rectangle425.png"
+
+// Import do react
+import { useState } from "react"
+import { FlatlistContainer, HomeContainer, RowContainer } from "../../components/container/style"
+import { NavButtonComponent } from "../../components/navButton/navButton"
+import { ScrollView } from "react-native"
+import Header from "../../components/header/header"
+import Card from "../../components/card/card"
+import Stethoscope from "../../components/stethoscope/stethoscope"
+import ToastUp from "../../components/toastUp/toastUp"
 
 const Home = () => {
 
@@ -17,6 +19,70 @@ const Home = () => {
         canceladas: false,
     });
 
+    const rawData = [
+        {
+            id: "imasdf",
+            image: image,
+            time: "14:00",
+            status: "a"
+        },
+        {
+            id: "imasdfasdf",
+            image: image,
+            time: "22:00",
+            status: "r"
+        },
+        {
+            id: "imasdfasdfasd",
+            image: image,
+            time: "14:00",
+            status: "c"
+        },
+        {
+            id: "imasdfasdfasdas",
+            image: image,
+            time: "14:00",
+            status: "r"
+        },
+        {
+            id: "imasdfasdffsad",
+            image: image,
+            time: "14:00",
+            status: "r"
+        },
+        {
+            id: "imasdfasdfdsasd",
+            image: image,
+            time: "14:00",
+            status: "a"
+        },
+        {
+            id: "imasdfasdfgasd",
+            image: image,
+            time: "14:00",
+            status: "a"
+        },
+        {
+            id: "imasdfasdfqwer",
+            image: image,
+            time: "14:00",
+            status: "a"
+        },
+    ]
+
+    const checkStatus = (data) => {
+        if (data.status === "a" && selected.agendadas === true) {
+            return data
+        }
+        else if (data.status === "r" && selected.realizadas === true) {
+            return data
+        }
+        else if (data.status === "c" && selected.canceladas === true) {
+            return data
+        }
+    }
+
+    const data = rawData.filter(checkStatus)
 
 
     return (
@@ -29,31 +95,35 @@ const Home = () => {
                 </ScrollView>
 
                 <RowContainer>
-                    <NavButtonComponent onPress={() => { setSelected({ agendadas: true }) }} selected={selected.agendadas} buttonTitle={'Agendadas'} />
-                    <NavButtonComponent onPress={() => { setSelected({ realizadas: true }) }} selected={selected.realizadas} buttonTitle={'Realizadas'} />
-                    <NavButtonComponent onPress={() => { setSelected({ canceladas: true }) }} selected={selected.canceladas} buttonTitle={'Canceladas'} />
+                    <NavButtonComponent
+                        onPress={() => { setSelected({ agendadas: true }) }}
+                        selected={selected.agendadas}
+                        buttonTitle={'Agendadas'} />
+                    <NavButtonComponent
+                        onPress={() => { setSelected({ realizadas: true }) }}
+                        selected={selected.realizadas}
+                        buttonTitle={'Realizadas'} />
+                    <NavButtonComponent
+                        onPress={() => { setSelected({ canceladas: true }) }}
+                        selected={selected.canceladas}
+                        buttonTitle={'Canceladas'} />
                 </RowContainer>
 
-                <Scroll>
-                    <Container>
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                        <Card image={image} time={"14:00"} status={"c"} />
-                    </Container>
-                </Scroll>
-
             </HomeContainer>
+
+
+
+            <FlatlistContainer
+                data={data}
+                renderItem={({ item }) =>
+                    <Card
+                        image={item.image}
+                        status={item.status}
+                        time={item.time} />}
+                keyExtractor={item => { item.id }} />
+
+            <Stethoscope />
+ 
         </>
     )
 }

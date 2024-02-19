@@ -9,7 +9,7 @@ export const HeaderContainer = styled(LinearGradient).attrs({
     width: 100%;
     height: 17%;
     border-radius: 12px;
-    padding:15% 20px 20px 30px;
+    padding:15% 5% 5% 5%;
 
     display:flex;
     flex-direction: row;
@@ -27,5 +27,4 @@ export const PictureHeader = styled.Image`
 export const IconHeader = styled.Image`
     width:25px;
     height: 25px;
-    margin:15px;
 `

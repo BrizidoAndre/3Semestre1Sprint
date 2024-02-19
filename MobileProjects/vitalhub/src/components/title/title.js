@@ -38,25 +38,25 @@ export const Label = styled.Text`
 `
 
 export const Sand14600 = styled.Text`
-    font-size:14;
+    font-size:14px;
     font-family: Quicksand_600SemiBold;
     color:#8C8A97;
 `
 
 export const Sand14600Green = styled.Text`
-    font-size:14;
+    font-size:14px;
     font-family: Quicksand_600SemiBold;
     color:#49B3BA;
 `
 
 export const Sand14600Gray = styled.Text`
-    font-size:14;
+    font-size:14px;
     font-family: Quicksand_600SemiBold;
     color:#4E4B59;
 `
 
 export const Sand14400 = styled.Text`
-    font-size:14;
+    font-size:14px;
     font-family: Quicksand_400Regular;
     color:#8C8A97;
 `

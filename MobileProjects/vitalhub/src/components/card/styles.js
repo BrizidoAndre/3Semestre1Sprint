@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const CardBox = styled.View`
-    border: 0.2px solid whitesmoke;
+    border-radius: 2px;
     elevation: 2;
 
     width: 90%;
     height: 100px;
     padding: 15px;
+
+    background-color: white;
+
+    margin:6px 0;
 
     display: flex;
     flex-direction: row;

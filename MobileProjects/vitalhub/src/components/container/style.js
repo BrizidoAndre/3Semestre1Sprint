@@ -12,6 +12,7 @@ align-items: center;
 justify-content: center;
 `
 export const HomeContainer = styled.SafeAreaView`
+display: flex;
 align-items: center;
 background-color: #fafafa;
 justify-self:center;
@@ -85,4 +86,9 @@ export const HeaderTextContainer = styled.View`
 
 export const Scroll = styled.ScrollView`
     width: 100%;
+`
+
+export const FlatlistContainer = styled.FlatList`
+    width: 100%;
+    margin-left: 5%;
 `

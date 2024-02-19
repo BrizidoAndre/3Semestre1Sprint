@@ -5,9 +5,9 @@ import Status, { StatusGray, StatusGreen } from "../status/status"
 import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, SubTitle } from "../title/title"
 import { CardBox, ImageCard, RowCardBox, TextCardBox } from "./styles"
 
-const Card = ({ image, time, status }) => {
+const Card = ({ image, time="14:00", status="c" }) => {
 
-    const StatusCheck = () => {
+    const statusCheck = () => {
         if (status === "a") {
             return (
 
@@ -23,7 +23,7 @@ const Card = ({ image, time, status }) => {
                 <RowCardBox>
                     <StatusGray time={time} />
                     <Center>
-                        <Mont12500Blue>Cancelar</Mont12500Blue>
+                        <Mont12500Blue>Ver Prontuário</Mont12500Blue>
                     </Center>
                 </RowCardBox>
             )
@@ -31,7 +31,7 @@ const Card = ({ image, time, status }) => {
         } else if (status === "c") {
             return (
                 <RowCardBox>
-                    <StatusGreen time={time} />
+                    <StatusGray time={time} />
                     <Center>
                     </Center>
                 </RowCardBox>
@@ -49,12 +49,12 @@ const Card = ({ image, time, status }) => {
 
                 <TextCardBox>
                     <Mont16600>Richard Kosta</Mont16600>
-                    <Sand14400>22. anos</Sand14400>
+                    <Sand14400>22 . anos</Sand14400>
 
                 </TextCardBox>
 
 
-                {StatusCheck()}
+                {statusCheck()}
             </Container>
         </CardBox>
     )
