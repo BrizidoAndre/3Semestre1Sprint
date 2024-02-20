@@ -17,7 +17,7 @@ align-items: center;
 background-color: #fafafa;
 justify-self:center;
 
-gap:10px;
+gap:30px;
 `
 
 export const ButtonContainer = styled.View`
@@ -90,5 +90,14 @@ export const Scroll = styled.ScrollView`
 
 export const FlatlistContainer = styled.FlatList`
     width: 100%;
-    margin-left: 5%;
+    margin: 30px 5%;
+`
+
+export const ModalContainer = styled.View`
+    height: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+
 `

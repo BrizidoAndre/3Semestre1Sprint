@@ -7,7 +7,7 @@ height: 53px;
 padding: 16px;
 border-radius: 5px;
 border: none;
-margin-bottom: 15px     ;
+margin-bottom: 15px;
 background-color: #496BBA;
 `;
 

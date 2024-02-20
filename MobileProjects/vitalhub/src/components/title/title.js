@@ -61,6 +61,12 @@ export const Sand14400 = styled.Text`
     color:#8C8A97;
 `
 
+export const Sand16500 = styled.Text`
+    font-size:16px;
+    font-family: Quicksand_500Medium;
+    color:#8C8A97;
+`
+
 export const Mont16600 = styled.Text`
     font-size: 16px;
     font-family: MontserratAlternates_600SemiBold;
@@ -76,4 +82,10 @@ export const Mont12500Blue = styled.Text`
     font-size: 12px;
     font-family: MontserratAlternates_500Medium;
     color: #344F8F;
+`
+
+export const Mont20600 = styled.Text`
+    font-size: 20px;
+    color: #33303E;
+    font-family: MontserratAlternates_600SemiBold;
 `
