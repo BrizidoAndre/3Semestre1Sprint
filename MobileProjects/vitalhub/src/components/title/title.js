@@ -37,6 +37,14 @@ export const Label = styled.Text`
     font-family: Quicksand_700Bold;
 `
 
+
+
+export const Sand14400 = styled.Text`
+    font-size:14px;
+    font-family: Quicksand_400Regular;
+    color:#8C8A97;
+`
+
 export const Sand14600 = styled.Text`
     font-size:14px;
     font-family: Quicksand_600SemiBold;
@@ -55,10 +63,30 @@ export const Sand14600Gray = styled.Text`
     color:#4E4B59;
 `
 
-export const Sand14400 = styled.Text`
-    font-size:14px;
-    font-family: Quicksand_400Regular;
-    color:#8C8A97;
+
+
+
+export const Mont12500Red = styled.Text`
+    font-size: 12px;
+    font-family: MontserratAlternates_500Medium;
+    color: #C81D25;
+`
+export const Mont12500Blue = styled.Text`
+    font-size: 12px;
+    font-family: MontserratAlternates_500Medium;
+    color: #344F8F;
+`
+
+export const Mont14600White = styled.Text`
+    font-size: 14px;
+    color:#FFF;
+    font-family: MontserratAlternates_600SemiBold;
+`
+
+export const Mont14600Green = styled.Text`
+    font-size: 14px;
+    color:#34898F;
+    font-family: MontserratAlternates_600SemiBold;
 `
 
 export const Sand16500 = styled.Text`
@@ -73,19 +101,9 @@ export const Mont16600 = styled.Text`
     color: #33303E;
 `
 
-export const Mont12500Red = styled.Text`
-    font-size: 12px;
-    font-family: MontserratAlternates_500Medium;
-    color: #C81D25;
-`
-export const Mont12500Blue = styled.Text`
-    font-size: 12px;
-    font-family: MontserratAlternates_500Medium;
-    color: #344F8F;
-`
-
 export const Mont20600 = styled.Text`
     font-size: 20px;
     color: #33303E;
     font-family: MontserratAlternates_600SemiBold;
 `
+

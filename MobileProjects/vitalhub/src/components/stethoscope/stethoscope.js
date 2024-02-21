@@ -1,9 +1,9 @@
 import { StethosImage, FixedButtton } from "./styles"
 
-const Stethoscope = () => {
+const Stethoscope = ( {onPress} ) => {
 
     return (
-        <FixedButtton>
+        <FixedButtton onPress={onPress}>
             <StethosImage source={require("../../assets/img/estetoscopio.png")} />
         </FixedButtton>
     )

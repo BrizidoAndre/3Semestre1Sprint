@@ -31,6 +31,18 @@ export const ModalMedRecord = styled.View`
     background-color: white;
 `
 
+export const BottomModal = styled.View`
+    width: 100%;
+    height: 70%;
+    border-radius: 10px 10px 0 0;
+    padding:20px 0;
+
+    background-color: white;
+
+    position: absolute;
+    bottom: 0;
+`
+
 
 export const ImageProfile = styled.Image`
     width:  90%;

@@ -5,7 +5,7 @@ import Status, { StatusGray, StatusGreen } from "../status/status"
 import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, SubTitle } from "../title/title"
 import { CardBox, ImageCard, RowCardBox, TextCardBox } from "./styles"
 
-const Card = ({ name, age, image, time="14:00", status="c", onPress=null }) => {
+const Card = ({ name, age, image, nivel, time="14:00", status="c", onPress=null }) => {
 
     const statusCheck = () => {
         if (status === "a") {
@@ -49,7 +49,7 @@ const Card = ({ name, age, image, time="14:00", status="c", onPress=null }) => {
 
                 <TextCardBox>
                     <Mont16600>{name}</Mont16600>
-                    <Sand14400>{age} . anos</Sand14400>
+                    <Sand14400>{age} anos · {nivel}</Sand14400>
                 </TextCardBox>
 
 

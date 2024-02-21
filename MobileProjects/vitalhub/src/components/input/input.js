@@ -14,6 +14,28 @@ export const Input = styled.TextInput.attrs({
     font-family: MontserratAlternates_600SemiBold;
 `
 
+export const SmallInput = styled.TouchableOpacity`
+    width: 31%;
+    height: 55px;
+    padding:16px;
+
+    border:2px solid #49b3ba;
+    border-radius: 5px;
+    display: flex;
+    align-items:center;
+`
+
+export const SmallInputGreen = styled.TouchableOpacity`
+    width: 31%;
+    height: 55px;
+    padding:16px;
+
+    background-color: #49b3ba;
+    border-radius: 5px;
+    display: flex;
+    align-items:center;
+`
+
 export const BigInput = styled.TextInput.attrs({
     placeholderTextColor: '#34898f',
 })`

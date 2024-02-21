@@ -8,93 +8,101 @@ import { NavButtonComponent } from "../../components/navButton/navButton"
 import { ScrollView } from "react-native"
 import Header from "../../components/header/header"
 import Card from "../../components/card/card"
-import { CancelAppointment, ShowRecord } from "../../components/modalActions/modalActions"
+import { CancelAppointment, CreateAppointment, ShowRecord } from "../../components/modalActions/modalActions"
+import Appointment from "../appointment/appointment"
+import Stethoscope from "../../components/stethoscope/stethoscope"
 
-const Home = () => {
+const Home = ({ navigation }) => {
 
+    // use states para os input de onPress
     const [selected, setSelected] = useState({
         agendadas: true,
         realizadas: false,
         canceladas: false,
     });
+
+    // Use states para os modais
     const [modalCancel, setModalCancel] = useState(false);
     const [modalRecord, setModalRecord] = useState(false);
+    const [modalSetAppointment, setModalSetAppointment] = useState(false);
     const [objModalRecord, setObjModalRecord] = useState({})
 
+
+    // Dados mocados para teste do flatlist
     const rawData = [
         {
             id: "imasdf",
-            name:'Richard Rasmussem',
-            age:22,
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Rotina',
             image: image,
-            email:'emaildoe@email.com',
+            email: 'emaildoe@email.com',
             time: "14:00",
             status: "a"
         },
         {
-            id: "imasdfasdf",
-            name:'Clone do Richard',
-            age:22,
+            id: "imasdf",
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Urgencia',
             image: image,
-            email:'emaildoe@email.com',
-            time: "22:00",
+            email: 'emaildoe@email.com',
+            time: "14:00",
             status: "r"
         },
         {
-            id: "imasdfasdfasd",
-            name:'Richard Rasmussem',
-            age:22,
+            id: "imasdf",
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Exame',
             image: image,
-            email:'emaildoe@email.com',
+            email: 'emaildoe@email.com',
+            time: "14:00",
+            status: "r"
+        },
+        {
+            id: "imasdf",
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Exame',
+            image: image,
+            email: 'emaildoe@email.com',
+            time: "14:00",
+            status: "a"
+        },
+        {
+            id: "imasdf",
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Exame',
+            image: image,
+            email: 'emaildoe@email.com',
             time: "14:00",
             status: "c"
         },
         {
-            id: "imasdfasdfasdas",
-            name:'Clone do clone do Richard',
-            age:22,
+            id: "imasdf",
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Urgencia',
             image: image,
-            email:'emaildoe@email.com',
+            email: 'emaildoe@email.com',
             time: "14:00",
-            status: "r"
+            status: "c"
         },
         {
-            id: "imasdfasdffsad",
-            name:'Richard Rasmussem',
-            age:22,
+            id: "imasdf",
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Rotina',
             image: image,
-            email:'emaildoe@email.com',
-            time: "14:00",
-            status: "r"
-        },
-        {
-            id: "imasdfasdfdsasd",
-            name:'Richard Rasmussem',
-            age:22,
-            image: image,
-            email:'emaildoe@email.com',
-            time: "14:00",
-            status: "a"
-        },
-        {
-            id: "imasdfasdfgasd",
-            name:'Richard Rasmussem',
-            age:22,
-            image: image,
-            email:'emaildoe@email.com',
-            time: "14:00",
-            status: "a"
-        },
-        {
-            id: "imasdfasdfqwer",
-            name:'Richard Rasmussem',
-            age:22,
-            image: image,
-            email:'emaildoe@email.com',
+            email: 'emaildoe@email.com',
             time: "14:00",
             status: "a"
         },
     ]
+
+    // função de filtragem 
     const checkStatus = (data) => {
         if (data.status === "a" && selected.agendadas === true) {
             return data
@@ -109,14 +117,28 @@ const Home = () => {
     const data = rawData.filter(checkStatus)
 
     const showRightModal = (obj) => {
-        if(obj.status === "a"){
+        if (obj.status === "a") {
             setModalCancel(true)
         }
-        if(obj.status === 'r'){
+        if (obj.status === 'r') {
             setModalRecord(true)
             setObjModalRecord(obj)
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return (
         <>
@@ -143,9 +165,7 @@ const Home = () => {
                 </RowContainer>
             </HomeContainer>
 
-            <CancelAppointment hideModal={modalCancel} onPressCancel={() => setModalCancel(false)} />
 
-            <ShowRecord item={objModalRecord} hideModal={modalRecord} onPressRecord={() => setModalRecord(false)} />
 
             <FlatlistContainer
                 data={data}
@@ -157,8 +177,29 @@ const Home = () => {
                         image={item.image}
                         status={item.status}
                         time={item.time}
-                        onPress={() => showRightModal(item) }/>}
-                keyExtractor={item => { item.id }} />
+                        nivel={item.nivel}
+                        onPress={() => showRightModal(item)} />}
+                keyExtractor={() => { Math.random() }} />
+
+            <CancelAppointment
+                hideModal={modalCancel}
+                onPressCancel={() => setModalCancel(false)}
+            />
+
+            <ShowRecord
+                item={objModalRecord}
+                hideModal={modalRecord}
+                onPressRecord={() => { setModalRecord(false) }}
+                onPressNavigate={() => { navigation.navigate(Appointment) }}
+            />
+
+            <CreateAppointment hideModal={modalSetAppointment} onPressCancel={() => setModalSetAppointment(false)} />
+
+
+
+
+
+            <Stethoscope onPress={() => { setModalSetAppointment(true) }} />
 
 
         </>

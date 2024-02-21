@@ -1,14 +1,14 @@
-import { InputContainer, LabelInputContainer, SmallInputLabelContainer } from "../container/style"
-import { Label, Title } from "../title/title"
-import { BigInput, BigInputBlack, Input, InputBlack } from "./input"
+import { SmallInputLabelContainer } from "../container/style"
+import { Label} from "../title/title"
+import { BigInput, BigInputBlack, Input, InputBlack, SmallInput } from "./input"
 
 export const InputLabelBlack = ({ title, placeholder, bigInput = false }) => {
     return (
         <>
             <Label>{title}</Label>
-            {bigInput?
-            <BigInputBlack placeholder={placeholder}/> : 
-            <InputBlack placeholder={placeholder}/>}
+            {bigInput ?
+                <BigInputBlack placeholder={placeholder} /> :
+                <InputBlack placeholder={placeholder} />}
         </>
     )
 }
@@ -18,11 +18,11 @@ export const InputLabel = ({ title, placeholder, bigInput = false }) => {
         <>
             <Label>{title}</Label>
 
-            { bigInput ? 
-            <BigInput 
-            multiline={true}
-            placeholder={placeholder} /> : 
-            <Input placeholder={placeholder} />
+            {bigInput ?
+                <BigInput
+                    multiline={true}
+                    placeholder={placeholder} /> :
+                <Input placeholder={placeholder} />
             }
         </>
     )
@@ -36,3 +36,4 @@ export const SmallInputLabel = ({ title, placeholder }) => {
         </SmallInputLabelContainer>
     )
 }
+
