@@ -45,10 +45,22 @@ export const Sand14400 = styled.Text`
     color:#8C8A97;
 `
 
+export const Sand14500Gray = styled.Text`
+    font-size:14px;
+    font-family: Quicksand_500Medium;
+    color:#8C8A97;
+`
+
 export const Sand14600 = styled.Text`
     font-size:14px;
     font-family: Quicksand_600SemiBold;
     color:#8C8A97;
+`
+
+export const Sand14600Yellow = styled.Text`
+    font-size:14px;
+    font-family: Quicksand_600SemiBold;
+    color:#F9A620;
 `
 
 export const Sand14600Green = styled.Text`
@@ -61,6 +73,13 @@ export const Sand14600Gray = styled.Text`
     font-size:14px;
     font-family: Quicksand_600SemiBold;
     color:#4E4B59;
+`
+
+
+export const Sand16500 = styled.Text`
+    font-size:16px;
+    font-family: Quicksand_500Medium;
+    color:#8C8A97;
 `
 
 
@@ -89,11 +108,6 @@ export const Mont14600Green = styled.Text`
     font-family: MontserratAlternates_600SemiBold;
 `
 
-export const Sand16500 = styled.Text`
-    font-size:16px;
-    font-family: Quicksand_500Medium;
-    color:#8C8A97;
-`
 
 export const Mont16600 = styled.Text`
     font-size: 16px;

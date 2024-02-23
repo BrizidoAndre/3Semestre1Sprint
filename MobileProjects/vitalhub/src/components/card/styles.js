@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardBox = styled.View`
-    border-radius: 2px;
+    border-radius: 5px;
     elevation: 2;
 
     width: 90%;
@@ -18,6 +18,32 @@ export const CardBox = styled.View`
     align-items:center;
     gap:10px;
 
+`
+export const ClinicCardBox = styled.View`
+    border-radius: 5px;
+    elevation: 2;
+
+    width: 90%;
+    height: 85px;
+    padding: 15px;
+
+    background-color: white;
+
+    margin:6px 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+`
+
+export const StarBox = styled.View`
+    display: flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+    margin: 5px 0;
 `
 
 export const ImageCard = styled.Image`

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import SelectClinic from "../../screens/selectClinic/selectClinic";
 import { Button } from "../button/button";
 import { ButtonTitle } from "../button/buttonTitle";
 import { ModalContainer, RowContainer, Container, InputContainer } from "../container/style";
@@ -6,6 +8,7 @@ import { InputLabel } from "../input/inputLabel";
 import { LinkBlueSmall } from "../links/links";
 import { Label, Mont14600Green, Mont20600, Sand16500, Title } from "../title/title";
 import { BottomModal, GrayBackground, ImageProfile, ModalCancel, ModalMedRecord, ModalMenu } from "./styles";
+import { AppointmentButton } from "../navButton/navButton";
 
 
 export const CancelAppointment = ({ hideModal = false, onPressCancel = null }) => {
@@ -32,7 +35,7 @@ export const CancelAppointment = ({ hideModal = false, onPressCancel = null }) =
     )
 }
 
-export const ShowRecord = ({ item = null, hideModal = true, onPressRecord = null, onPressNavigate = null }) => {
+export const ShowRecord = ({ item = null, hideModal = false, onPressRecord = null, onPressNavigate = null }) => {
 
     if (!hideModal) {
         return (<>
@@ -60,7 +63,11 @@ export const ShowRecord = ({ item = null, hideModal = true, onPressRecord = null
 }
 
 
-export const CreateAppointment = ({ hideModal, onPressCancel }) => {
+export const CreateAppointment = ({ hideModal, onPressCancel, navigation }) => {
+
+   
+
+
 
     if (!hideModal) {
         return (
@@ -82,7 +89,7 @@ export const CreateAppointment = ({ hideModal, onPressCancel }) => {
                         placeholder={"Ex: São Paulo"} />
                     </InputContainer>
 
-                    <Button><ButtonTitle>CONTINUAR</ButtonTitle></Button>
+                    <Button onPress={() => navigation.navigate("SelectClinic")}><ButtonTitle>CONTINUAR</ButtonTitle></Button>
                     <LinkBlueSmall onPress={onPressCancel}>Cancelar</LinkBlueSmall>
                 </Container>
 
@@ -92,13 +99,31 @@ export const CreateAppointment = ({ hideModal, onPressCancel }) => {
 }
 
 export const AppointmentLevel = ({selectedInput = null }) => {
+
+    const [appointmentLevel, setAppointmentLevel] = useState({
+        exam:false,
+        urgent:false,
+        routine:false
+    })
+
     return (
         <>
             <Label>Qual o nível da consulta</Label>
             <RowContainer>
-                <SmallInput><Mont14600Green>Rotina</Mont14600Green></SmallInput>
-                <SmallInput><Mont14600Green>Exame</Mont14600Green></SmallInput>
-                <SmallInput><Mont14600Green>Urgência</Mont14600Green></SmallInput>
+                <AppointmentButton 
+                selected={appointmentLevel.routine} 
+                buttonTitle={'Rotina'}
+                onPress={() => setAppointmentLevel({routine:true})}/>
+
+                <AppointmentButton 
+                selected={appointmentLevel.exam} 
+                buttonTitle={'Exame'}
+                onPress={() => setAppointmentLevel({exam:true})}/>
+
+                <AppointmentButton 
+                selected={appointmentLevel.urgent} 
+                buttonTitle={'Urgência'}
+                onPress={() => setAppointmentLevel({urgent:true})}/>
             </RowContainer>
         </>
     )

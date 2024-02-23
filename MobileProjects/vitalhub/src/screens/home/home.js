@@ -20,11 +20,14 @@ const Home = ({ navigation }) => {
         realizadas: false,
         canceladas: false,
     });
-
+    
     // Use states para os modais
-    const [modalCancel, setModalCancel] = useState(false);
-    const [modalRecord, setModalRecord] = useState(false);
-    const [modalSetAppointment, setModalSetAppointment] = useState(false);
+    const [modal, setModal] = useState({
+        cancel: false,
+        record: false,
+        setAppointment: false,
+    })
+    // Use state para 
     const [objModalRecord, setObjModalRecord] = useState({})
 
 
@@ -41,7 +44,7 @@ const Home = ({ navigation }) => {
             status: "a"
         },
         {
-            id: "imasdf",
+            id: "imasdfd",
             name: 'Richard Rasmussem',
             age: 22,
             nivel: 'Urgencia',
@@ -51,7 +54,7 @@ const Home = ({ navigation }) => {
             status: "r"
         },
         {
-            id: "imasdf",
+            id: "imasdfs",
             name: 'Richard Rasmussem',
             age: 22,
             nivel: 'Exame',
@@ -61,7 +64,7 @@ const Home = ({ navigation }) => {
             status: "r"
         },
         {
-            id: "imasdf",
+            id: "imasdfasd",
             name: 'Richard Rasmussem',
             age: 22,
             nivel: 'Exame',
@@ -71,7 +74,7 @@ const Home = ({ navigation }) => {
             status: "a"
         },
         {
-            id: "imasdf",
+            id: "imasdfqwe",
             name: 'Richard Rasmussem',
             age: 22,
             nivel: 'Exame',
@@ -81,7 +84,7 @@ const Home = ({ navigation }) => {
             status: "c"
         },
         {
-            id: "imasdf",
+            id: "imasdfzxc",
             name: 'Richard Rasmussem',
             age: 22,
             nivel: 'Urgencia',
@@ -91,7 +94,7 @@ const Home = ({ navigation }) => {
             status: "c"
         },
         {
-            id: "imasdf",
+            id: "imasdffghhg",
             name: 'Richard Rasmussem',
             age: 22,
             nivel: 'Rotina',
@@ -114,14 +117,16 @@ const Home = ({ navigation }) => {
             return data
         }
     }
+
     const data = rawData.filter(checkStatus)
 
     const showRightModal = (obj) => {
         if (obj.status === "a") {
-            setModalCancel(true)
+            setModal({cancel:true})
         }
         if (obj.status === 'r') {
-            setModalRecord(true)
+            setModal({record:true})
+            
             setObjModalRecord(obj)
         }
     }
@@ -171,35 +176,36 @@ const Home = ({ navigation }) => {
                 data={data}
                 renderItem={({ item }) =>
                     <Card
-                        key={Math.random()}
                         name={item.name}
                         age={item.age}
                         image={item.image}
                         status={item.status}
                         time={item.time}
                         nivel={item.nivel}
-                        onPress={() => showRightModal(item)} />}
-                keyExtractor={() => { Math.random() }} />
+                        onPress={() => showRightModal(item)} />}/>
 
             <CancelAppointment
-                hideModal={modalCancel}
-                onPressCancel={() => setModalCancel(false)}
+                hideModal={modal.cancel}
+                onPressCancel={() => setModal({cancel: false})}
             />
 
             <ShowRecord
                 item={objModalRecord}
-                hideModal={modalRecord}
-                onPressRecord={() => { setModalRecord(false) }}
+                hideModal={modal.record}
+                onPressRecord={() => {setModal({record: false})}}
                 onPressNavigate={() => { navigation.navigate(Appointment) }}
             />
 
-            <CreateAppointment hideModal={modalSetAppointment} onPressCancel={() => setModalSetAppointment(false)} />
+            <CreateAppointment
+                hideModal={modal.setAppointment}
+                onPressCancel={() => setModal({setAppointment: false})}
+                navigation={navigation}/>
 
 
 
 
 
-            <Stethoscope onPress={() => { setModalSetAppointment(true) }} />
+            <Stethoscope onPress={() => { setModal({setAppointment:true}) }} />
 
 
         </>

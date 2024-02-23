@@ -20,6 +20,13 @@ justify-self:center;
 gap:30px;
 `
 
+export const WithoutHeader = styled.SafeAreaView`
+display: flex;
+margin-top: 20%;
+align-items: center;
+
+`
+
 export const ButtonContainer = styled.View`
 width: 80%;
 display: flex;
@@ -91,6 +98,13 @@ export const Scroll = styled.ScrollView`
 export const FlatlistContainer = styled.FlatList`
     width: 100%;
     margin: 30px 5%;
+`
+
+export const FlatlistClinicCard = styled.FlatList`
+    width: 100%;
+    height: 75%;
+    
+    margin: 0 0 20px 10%;
 `
 
 export const ModalContainer = styled.View`

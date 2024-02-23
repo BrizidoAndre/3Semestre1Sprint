@@ -1,11 +1,12 @@
-import { TouchableOpacity } from "react-native"
+import { TouchableOpacity, View } from "react-native"
 import { Center, Container, RowContainer } from "../container/style"
 import { NavButtonComponent } from "../navButton/navButton"
-import Status, { StatusGray, StatusGreen } from "../status/status"
-import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, SubTitle } from "../title/title"
-import { CardBox, ImageCard, RowCardBox, TextCardBox } from "./styles"
+import Status, { StatusData, StatusGray, StatusGreen, StatusStar } from "../status/status"
+import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, Sand14600, SubTitle, Title } from "../title/title"
+import { CardBox, ClinicCardBox, ImageCard, RowCardBox, TextCardBox } from "./styles"
+import { IconWatch } from "../status/styles"
 
-const Card = ({ name, age, image, nivel, time="14:00", status="c", onPress=null }) => {
+const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress = null }) => {
 
     const statusCheck = () => {
         if (status === "a") {
@@ -54,6 +55,36 @@ const Card = ({ name, age, image, nivel, time="14:00", status="c", onPress=null 
 
 
                 {statusCheck()}
+            </Container>
+        </CardBox>
+    )
+}
+
+export const ClinicCard = ({name, location, grade, time}) => {
+
+    return (
+        <ClinicCardBox>
+            <View>
+                <Mont16600>{name}</Mont16600>
+                <Sand14600>{location}</Sand14600>
+            </View>
+
+            <View>
+                <StatusStar grade={grade}/>
+                <StatusData time={time}/>
+            </View>
+        </ClinicCardBox>
+    )
+}
+
+const CardMedic = ({ name, specialty, image }) => {
+
+    return (
+        <CardBox>
+            <ImageCard source={image} />
+            <Container>
+
+                <Title>{name}</Title>
             </Container>
         </CardBox>
     )

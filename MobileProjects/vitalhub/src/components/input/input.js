@@ -30,6 +30,7 @@ export const SmallInputGreen = styled.TouchableOpacity`
     height: 55px;
     padding:16px;
 
+    border:2px solid #49b3ba;
     background-color: #49b3ba;
     border-radius: 5px;
     display: flex;
