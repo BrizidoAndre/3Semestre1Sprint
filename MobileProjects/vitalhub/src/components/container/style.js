@@ -115,3 +115,12 @@ export const ModalContainer = styled.View`
     align-items:center;
 
 `
+
+export const CalendarContainer = styled.View`
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    width: 90%;
+    margin: 20px 0;
+`

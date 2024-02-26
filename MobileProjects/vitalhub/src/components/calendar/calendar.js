@@ -1,29 +1,35 @@
-const Calendar = () => {
+import { ScrollView } from "react-native";
+import { Title } from "../title/title";
+import { DateBox, DateSelectedBox, TextDate, TextDateSelected, TextNumberDate, TextNumberDateSelected } from "./style";
+import { RowContainer } from "../container/style";
 
-    const data = new Date()
 
-    data = data.getDay();
+export const ProduceDate = ({i, selected = false, onPress = null}) => {
 
-    alert(data)
+    var data = new Date()
+    data.setDate(data.getDate() + i)
 
-    // Array com os dias da semana abreviados
-    var diasDaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+    var dataNumber = data.toLocaleDateString('default', { day: '2-digit' });
 
-    const semanaResumida = diasDaSemana[data]
+    var dataWeek = data.toLocaleDateString('default', { weekday: 'short' });
+    dataWeek = dataWeek.slice(0, -1)
 
-    const produceDate = () => {
-        for (let i = 0; i < 10; i++) {
-            return (
-                <></>
-            )
-        }
+
+    if (selected === true) {
+        return (
+            <DateSelectedBox >
+                <TextDateSelected>{dataWeek}</TextDateSelected>
+                <TextNumberDateSelected>{dataNumber}</TextNumberDateSelected>
+            </DateSelectedBox>
+        )
+
     }
-
-    return (
-        <>
-
-        </>
-    )
+    else {
+        return (
+            <DateBox onPress={onPress}>
+                <TextDate>{dataWeek}</TextDate>
+                <TextNumberDate>{dataNumber}</TextNumberDate>
+            </DateBox>
+        )
+    }
 }
-
-export default Calendar

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const DateSelected = styled.View`
+export const DateSelectedBox = styled.TouchableOpacity`
     background-color: #49B3BA;
-    border-radius:50%;
+    border-radius:50px;
+    
     width:42px;
     height:42px;
     display: flex;
@@ -21,8 +22,8 @@ export const TextNumberDateSelected = styled.Text`
     color:white;
 `
 
-export const Date = styled.View`
-    border-radius:50%;
+export const DateBox = styled.TouchableOpacity`
+    border-radius:50px;
     width:42px;
     height:42px;
     display:flex;
@@ -36,7 +37,7 @@ export const TextDate = styled.Text`
     color:#ACABB7;
 `
 export const TextNumberDate = styled.Text`
-    font-size: 12px;
+    font-size: 16px;
     font-family: Quicksand_600SemiBold;
     color:#5F5C6B;
 `

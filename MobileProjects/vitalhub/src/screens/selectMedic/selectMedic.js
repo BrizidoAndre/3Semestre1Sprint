@@ -1,81 +1,71 @@
 import { Button } from "../../components/button/button"
 import { ButtonTitle } from "../../components/button/buttonTitle"
-import { ClinicCard } from "../../components/card/card"
+import { ClinicCard, MedicCard } from "../../components/card/card"
 import { FlatlistClinicCard, WithoutHeader } from "../../components/container/style"
 import { LinkBlueSmall } from "../../components/links/links"
 import { Title } from "../../components/title/title"
 
+// import de imagens
+import image from '../../assets/img/Rectangle425.png'
 
-const SelectMedic = ({navigation}) => {
+
+const SelectMedic = ({ navigation }) => {
 
     const rawData = [
         {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
+            name: 'Medico Sakamura',
+            specialty: 'Cardiologist',
+            image: image
         },
         {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
+            name: 'Medico Sakamura',
+            specialty: 'Cardiologist',
+            image: image
         },
         {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
+            name: 'Medico Sakamura',
+            specialty: 'Cardiologist',
+            image: image
         },
         {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
+            name: 'Medico Sakamura',
+            specialty: 'Cardiologist',
+            image: image
         },
         {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
+            name: 'Medico Sakamura',
+            specialty: 'Cardiologist',
+            image: image
         },
         {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
+            name: 'Medico Sakamura',
+            specialty: 'Cardiologist',
+            image: image
         },
         {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
-        },
-        {
-            name: 'Senai Paulo Skaf',
-            location: 'São Caetano do Sul, SP',
-            time: 'Seg-Sex',
-            grade: "4.5"
+            name: 'Medico Sakamura',
+            specialty: 'Cardiologist',
+            image: image
         },
     ]
 
-    return(
+    return (
         <WithoutHeader>
             <Title>Selecionar Médico</Title>
 
             <FlatlistClinicCard
                 data={rawData}
                 renderItem={({ item }) =>
-                    <ClinicCard
-                        grade={item.grade}
-                        location={item.location}
+                    <MedicCard
+                        image={item.image}
                         name={item.name}
-                        time={item.time} />}
+                        specialty={item.specialty}
+                    />}
             />
 
 
             <Button onPress={() => navigation.goBack()}><ButtonTitle>CONTINUAR</ButtonTitle></Button>
-            <LinkBlueSmall>Cancelar</LinkBlueSmall>
+            <LinkBlueSmall onPress={() => navigation.goBack()}>Cancelar</LinkBlueSmall>
         </WithoutHeader >
     )
 }

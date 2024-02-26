@@ -3,7 +3,7 @@ import image from "../../assets/img/Rectangle425.png"
 
 // Import do react
 import { useEffect, useState } from "react"
-import { FlatlistContainer, HomeContainer, RowContainer } from "../../components/container/style"
+import { CalendarContainer, FlatlistContainer, HomeContainer, InputContainer, RowContainer } from "../../components/container/style"
 import { NavButtonComponent } from "../../components/navButton/navButton"
 import { ScrollView } from "react-native"
 import Header from "../../components/header/header"
@@ -11,6 +11,8 @@ import Card from "../../components/card/card"
 import { CancelAppointment, CreateAppointment, ShowRecord } from "../../components/modalActions/modalActions"
 import Appointment from "../appointment/appointment"
 import Stethoscope from "../../components/stethoscope/stethoscope"
+import { Mont12500Red, Mont20600 } from "../../components/title/title"
+import Calendar, { ProduceDate } from "../../components/calendar/calendar"
 
 const Home = ({ navigation }) => {
 
@@ -20,15 +22,18 @@ const Home = ({ navigation }) => {
         realizadas: false,
         canceladas: false,
     });
-    
     // Use states para os modais
     const [modal, setModal] = useState({
         cancel: false,
         record: false,
         setAppointment: false,
     })
-    // Use state para 
+    // Use state para o modal do prontuário
     const [objModalRecord, setObjModalRecord] = useState({})
+
+    const [dateSelected, setDateSelected] = useState({
+        aaa: true
+    })
 
 
     // Dados mocados para teste do flatlist
@@ -105,7 +110,7 @@ const Home = ({ navigation }) => {
         },
     ]
 
-    // função de filtragem 
+    // função de filtragem dos dados 
     const checkStatus = (data) => {
         if (data.status === "a" && selected.agendadas === true) {
             return data
@@ -122,25 +127,23 @@ const Home = ({ navigation }) => {
 
     const showRightModal = (obj) => {
         if (obj.status === "a") {
-            setModal({cancel:true})
+            setModal({ cancel: true })
         }
         if (obj.status === 'r') {
-            setModal({record:true})
-            
+            setModal({ record: true })
+
             setObjModalRecord(obj)
         }
     }
 
+    const getToday = () => {
 
+        const date = new Date();
 
+        const dateTitle = date.toLocaleString('default', { month: 'long', year: 'numeric' })
 
-
-
-
-
-
-
-
+        return dateTitle;
+    }
 
 
 
@@ -149,10 +152,48 @@ const Home = ({ navigation }) => {
         <>
             <Header profileName="Richard Rasmussen" />
             <HomeContainer>
-                <ScrollView horizontal={true}>
-                    <RowContainer>
-                    </RowContainer>
-                </ScrollView>
+                <CalendarContainer>
+                    <Mont20600>{getToday()}</Mont20600>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        <RowContainer>
+                            <ProduceDate 
+                            i={0} 
+                            selected={dateSelected.a} 
+                            onPress={() => { setDateSelected({a:true})  }}  />
+
+                            <ProduceDate 
+                            i={1} 
+                            selected={dateSelected.b} 
+                            onPress={() => { setDateSelected({b:true})  }}  />
+
+                            <ProduceDate 
+                            i={2} 
+                            selected={dateSelected.c} 
+                            onPress={() => { setDateSelected({c:true})  }}  />
+
+                            <ProduceDate 
+                            i={3} 
+                            selected={dateSelected.d} 
+                            onPress={() => { setDateSelected({d:true})  }}  />
+
+                            <ProduceDate 
+                            i={4} 
+                            selected={dateSelected.e} 
+                            onPress={() => { setDateSelected({e:true})  }}  />
+
+                            <ProduceDate 
+                            i={5} 
+                            selected={dateSelected.f} 
+                            onPress={() => { setDateSelected({f:true})  }}  />
+
+                            <ProduceDate 
+                            i={6} 
+                            selected={dateSelected.g} 
+                            onPress={() => { setDateSelected({g:true})  }}  />
+
+                        </RowContainer>
+                    </ScrollView>
+                </CalendarContainer>
 
                 <RowContainer>
                     <NavButtonComponent
@@ -182,30 +223,30 @@ const Home = ({ navigation }) => {
                         status={item.status}
                         time={item.time}
                         nivel={item.nivel}
-                        onPress={() => showRightModal(item)} />}/>
+                        onPress={() => showRightModal(item)} />} />
 
             <CancelAppointment
                 hideModal={modal.cancel}
-                onPressCancel={() => setModal({cancel: false})}
+                onPressCancel={() => setModal({ cancel: false })}
             />
 
             <ShowRecord
                 item={objModalRecord}
                 hideModal={modal.record}
-                onPressRecord={() => {setModal({record: false})}}
+                onPressRecord={() => { setModal({ record: false }) }}
                 onPressNavigate={() => { navigation.navigate(Appointment) }}
             />
 
             <CreateAppointment
                 hideModal={modal.setAppointment}
-                onPressCancel={() => setModal({setAppointment: false})}
-                navigation={navigation}/>
+                onPressCancel={() => setModal({ setAppointment: false })}
+                navigation={navigation} />
 
 
 
 
 
-            <Stethoscope onPress={() => { setModal({setAppointment:true}) }} />
+            <Stethoscope onPress={() => { setModal({ setAppointment: true }) }} />
 
 
         </>

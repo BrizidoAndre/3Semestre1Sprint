@@ -1,10 +1,11 @@
 import { TouchableOpacity, View } from "react-native"
-import { Center, Container, RowContainer } from "../container/style"
+import { Center, Container, ModalContainer, RowContainer } from "../container/style"
 import { NavButtonComponent } from "../navButton/navButton"
 import Status, { StatusData, StatusGray, StatusGreen, StatusStar } from "../status/status"
-import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, Sand14600, SubTitle, Title } from "../title/title"
-import { CardBox, ClinicCardBox, ImageCard, RowCardBox, TextCardBox } from "./styles"
+import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, Sand14500Gray, Sand14600, SubTitle, Title } from "../title/title"
+import { CardBox, CardBoxSelect, ClinicCardBox, ClinicCardBoxSelected, ImageCard, ItemCardBox, MedicCardBox, RowCardBox, TextCardBox } from "./styles"
 import { IconWatch } from "../status/styles"
+import { useState } from "react"
 
 const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress = null }) => {
 
@@ -60,34 +61,71 @@ const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress =
     )
 }
 
-export const ClinicCard = ({name, location, grade, time}) => {
+export const ClinicCard = ({ name, location, grade, time }) => {
 
-    return (
-        <ClinicCardBox>
-            <View>
-                <Mont16600>{name}</Mont16600>
-                <Sand14600>{location}</Sand14600>
-            </View>
 
-            <View>
-                <StatusStar grade={grade}/>
-                <StatusData time={time}/>
-            </View>
-        </ClinicCardBox>
-    )
+    const [select, setSelect] = useState(false)
+
+    if (select) {
+        return (
+            <ClinicCardBoxSelected>
+                <ItemCardBox>
+                    <Mont16600>{name}</Mont16600>
+                    <Sand14600>{location}</Sand14600>
+                </ItemCardBox>
+
+                <ItemCardBox>
+                    <StatusStar grade={grade} />
+                    <StatusData time={time} />
+                </ItemCardBox>
+            </ClinicCardBoxSelected>
+        )
+    }
+    else {
+        return (
+            <ClinicCardBox onPress={() => setSelect(true)}>
+                <ItemCardBox>
+                    <Mont16600>{name}</Mont16600>
+                    <Sand14600>{location}</Sand14600>
+                </ItemCardBox>
+
+                <ItemCardBox>
+                    <StatusStar grade={grade} />
+                    <StatusData time={time} />
+                </ItemCardBox>
+            </ClinicCardBox>
+        )
+    }
 }
 
-const CardMedic = ({ name, specialty, image }) => {
+export const MedicCard = ({ name, specialty, image }) => {
 
-    return (
-        <CardBox>
-            <ImageCard source={image} />
-            <Container>
 
-                <Title>{name}</Title>
-            </Container>
-        </CardBox>
-    )
+    const [select, setSelect] = useState(false)
+
+    if (select) {
+        return (
+            <CardBoxSelect>
+                <ImageCard source={image} />
+                <MedicCardBox>
+                    <Mont16600>{name}</Mont16600>
+                    <Sand14500Gray>{specialty}</Sand14500Gray>
+                </MedicCardBox>
+            </CardBoxSelect>
+        )
+    }
+
+    else {
+        return (
+            <CardBox onPress={() => setSelect(true)}>
+                <ImageCard source={image} />
+                <MedicCardBox>
+                    <Mont16600>{name}</Mont16600>
+                    <Sand14500Gray>{specialty}</Sand14500Gray>
+                </MedicCardBox>
+            </CardBox>
+        )
+    }
 }
 
 export default Card

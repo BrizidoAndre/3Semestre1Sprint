@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardBox = styled.View`
+export const CardBox = styled.TouchableOpacity`
     border-radius: 5px;
     elevation: 2;
 
@@ -17,25 +17,40 @@ export const CardBox = styled.View`
     justify-content:space-between;
     align-items:center;
     gap:10px;
-
 `
-export const ClinicCardBox = styled.View`
+
+export const CardBoxSelect = styled(CardBox)`
+    border: 2px solid #496BBA;
+`
+
+export const ClinicCardBox = styled.TouchableOpacity`
     border-radius: 5px;
     elevation: 2;
 
     width: 90%;
     height: 85px;
-    padding: 15px;
-
+    
     background-color: white;
-
+    
+    padding: 15px;
     margin:6px 0;
+    gap:10px;
 
     display: flex;
     flex-direction: row;
     justify-content:space-between;
     align-items:center;
-    gap:10px;
+`
+
+export const ClinicCardBoxSelected = styled(ClinicCardBox)`
+    border: 2px solid #496BBA;
+`
+
+export const ItemCardBox = styled.View`
+    display: flex;
+    justify-content: space-between;
+
+    gap: 10px;
 `
 
 export const StarBox = styled.View`
@@ -43,7 +58,6 @@ export const StarBox = styled.View`
     flex-direction:row;
     justify-content:flex-end;
     align-items:center;
-    margin: 5px 0;
 `
 
 export const ImageCard = styled.Image`
@@ -66,4 +80,12 @@ export const RowCardBox = styled.View`
     display:flex;
     flex-direction:row;
     justify-content:space-between;
+`
+
+export const MedicCardBox = styled.View`
+    display: flex;
+    align-items:flex-start;
+    width: 75%;
+    
+    gap:10px
 `
