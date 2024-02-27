@@ -25,8 +25,8 @@ const Navigation = ({ navigation }) => {
             />
 
             <Button 
-                title="Select Medic"
-                onPress={() => navigation.navigate("SelectMedic")}
+                title="Select Data"
+                onPress={() => navigation.navigate("SelectData")}
             />
         </View>
     );

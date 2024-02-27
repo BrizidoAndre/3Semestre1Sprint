@@ -96,5 +96,19 @@ export const BigInputBlack = styled.TextInput.attrs({
 
     font-family: MontserratAlternates_500Medium;
     font-size:14px;
+`
 
+export const Select = styled.TouchableOpacity`
+    width: 100%;
+    height: 50px;
+    border:2px solid #60BFC5;
+    padding: 15px;
+    border-radius: 5px;
+
+    background-color: white;
+
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
 `

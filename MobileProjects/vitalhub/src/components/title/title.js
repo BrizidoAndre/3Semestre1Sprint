@@ -39,6 +39,12 @@ export const Label = styled.Text`
 
 
 
+export const Sand12600 = styled.Text`
+    font-size:12px;
+    font-family: Quicksand_600SemiBold;
+    color:#8C8A97;
+`
+
 export const Sand14400 = styled.Text`
     font-size:14px;
     font-family: Quicksand_400Regular;
@@ -54,7 +60,7 @@ export const Sand14500Gray = styled.Text`
 export const Sand14600 = styled.Text`
     font-size:14px;
     font-family: Quicksand_600SemiBold;
-    color:#8C8A97;
+    color:black;
 `
 
 export const Sand14600Yellow = styled.Text`
@@ -80,6 +86,20 @@ export const Sand16500 = styled.Text`
     font-size:16px;
     font-family: Quicksand_500Medium;
     color:#8C8A97;
+`
+
+export const Sand16500Date = styled.Text`
+    font-size:16px;
+    font-family: Quicksand_500Medium;
+    color:black;
+
+    width: 20px;
+`
+
+export const Sand16500DateSelected = styled.Text`
+    font-size:16px;
+    font-family: Quicksand_500Medium;
+    color:white;
 `
 
 
@@ -118,6 +138,12 @@ export const Mont16600 = styled.Text`
 export const Mont20600 = styled.Text`
     font-size: 20px;
     color: #33303E;
+    font-family: MontserratAlternates_600SemiBold;
+`
+
+export const Mont20600Gray = styled.Text`
+    font-size: 20px;
+    color: #5F5C6B;
     font-family: MontserratAlternates_600SemiBold;
 `
 

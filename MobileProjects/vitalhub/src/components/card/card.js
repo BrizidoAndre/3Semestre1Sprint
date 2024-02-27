@@ -61,12 +61,11 @@ const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress =
     )
 }
 
-export const ClinicCard = ({ name, location, grade, time }) => {
+export const ClinicCard = ({ name, location, grade, time, onPress, select }) => {
 
 
-    const [select, setSelect] = useState(false)
 
-    if (select) {
+    if (select === name) {
         return (
             <ClinicCardBoxSelected>
                 <ItemCardBox>
@@ -83,7 +82,7 @@ export const ClinicCard = ({ name, location, grade, time }) => {
     }
     else {
         return (
-            <ClinicCardBox onPress={() => setSelect(true)}>
+            <ClinicCardBox onPress={onPress}>
                 <ItemCardBox>
                     <Mont16600>{name}</Mont16600>
                     <Sand14600>{location}</Sand14600>
@@ -98,12 +97,10 @@ export const ClinicCard = ({ name, location, grade, time }) => {
     }
 }
 
-export const MedicCard = ({ name, specialty, image }) => {
+export const MedicCard = ({ name, specialty, image, onPress, select }) => {
 
 
-    const [select, setSelect] = useState(false)
-
-    if (select) {
+    if (select ===name) {
         return (
             <CardBoxSelect>
                 <ImageCard source={image} />
@@ -117,7 +114,7 @@ export const MedicCard = ({ name, specialty, image }) => {
 
     else {
         return (
-            <CardBox onPress={() => setSelect(true)}>
+            <CardBox onPress={onPress}>
                 <ImageCard source={image} />
                 <MedicCardBox>
                     <Mont16600>{name}</Mont16600>

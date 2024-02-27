@@ -1,6 +1,7 @@
 import { SmallInputLabelContainer } from "../container/style"
-import { Label} from "../title/title"
-import { BigInput, BigInputBlack, Input, InputBlack, SmallInput } from "./input"
+import { IconWatch } from "../status/styles"
+import { Label, Mont14600Green, Sand14600} from "../title/title"
+import { BigInput, BigInputBlack, Input, InputBlack, Select, SmallInput } from "./input"
 
 export const InputLabelBlack = ({ title, placeholder, bigInput = false }) => {
     return (
@@ -37,3 +38,15 @@ export const SmallInputLabel = ({ title, placeholder }) => {
     )
 }
 
+export const SelectLabel = ({ title, placeholder }) => {
+    return (
+        <>
+            <Sand14600>{title}</Sand14600>
+
+            <Select>
+                <Mont14600Green>{placeholder}</Mont14600Green>
+                <IconWatch source={require('../../assets/img/Arrow.png')} />
+            </Select>
+        </>
+    )
+}

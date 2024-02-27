@@ -7,9 +7,12 @@ import { Title } from "../../components/title/title"
 
 // import de imagens
 import image from '../../assets/img/Rectangle425.png'
+import { useState } from "react"
 
 
 const SelectMedic = ({ navigation }) => {
+
+    const [selected, setSelected] = useState('')
 
     const rawData = [
         {
@@ -18,32 +21,32 @@ const SelectMedic = ({ navigation }) => {
             image: image
         },
         {
-            name: 'Medico Sakamura',
+            name: 'Medico Despacito',
             specialty: 'Cardiologist',
             image: image
         },
         {
-            name: 'Medico Sakamura',
+            name: 'Medico Poa',
             specialty: 'Cardiologist',
             image: image
         },
         {
-            name: 'Medico Sakamura',
+            name: 'Medico Youre welcome',
             specialty: 'Cardiologist',
             image: image
         },
         {
-            name: 'Medico Sakamura',
+            name: 'Medico bananas',
             specialty: 'Cardiologist',
             image: image
         },
         {
-            name: 'Medico Sakamura',
+            name: 'Medico Peras',
             specialty: 'Cardiologist',
             image: image
         },
         {
-            name: 'Medico Sakamura',
+            name: 'Medico Sushi',
             specialty: 'Cardiologist',
             image: image
         },
@@ -57,6 +60,8 @@ const SelectMedic = ({ navigation }) => {
                 data={rawData}
                 renderItem={({ item }) =>
                     <MedicCard
+                        select={selected}
+                        onPress={()=>setSelected(item.name)}
                         image={item.image}
                         name={item.name}
                         specialty={item.specialty}

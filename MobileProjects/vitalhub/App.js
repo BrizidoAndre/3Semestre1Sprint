@@ -27,6 +27,7 @@ import EditAppointment from './src/screens/editAppointment/editAppointment';
 import Home from './src/screens/home/home';
 import SelectClinic from './src/screens/selectClinic/selectClinic';
 import SelectMedic from './src/screens/selectMedic/selectMedic';
+import SelectData from './src/screens/selectData/selectData';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -152,6 +153,11 @@ export default function App() {
         name='SelectMedic'
         component={SelectMedic}
         options={{title:'SelectMedic'}} />
+
+        <Stack.Screen 
+        name='SelectData'
+        component={SelectData}
+        options={{title:'SelectData'}}/>
 
 
       </Stack.Navigator>
