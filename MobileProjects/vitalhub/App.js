@@ -17,6 +17,8 @@ import {
   Quicksand_500Medium,
   Quicksand_400Regular, 
 } from '@expo-google-fonts/quicksand'
+
+
 import CheckEmail from './src/screens/checkEmail/checkEmail';
 import RedefinePassword from './src/screens/redefinePassword/redefinePassword';
 import CreateAccount from './src/screens/createAccount/createAccount';

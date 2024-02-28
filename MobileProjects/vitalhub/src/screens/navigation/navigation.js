@@ -23,7 +23,7 @@ const Navigation = ({ navigation }) => {
                 title="Home"
                 onPress={() => navigation.navigate("Home")}
             />
-
+            
             <Button 
                 title="Select Data"
                 onPress={() => navigation.navigate("SelectData")}

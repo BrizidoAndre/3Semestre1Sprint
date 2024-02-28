@@ -111,4 +111,19 @@ export const Select = styled.TouchableOpacity`
     flex-direction:row;
     align-items:center;
     justify-content:space-between;
+
+    position:relative;
+`
+
+export const SelectRow = styled.TouchableOpacity`
+    width: 100%;
+    height:50px;
+    padding: 15px;
+`
+
+export const FlatListSelect = styled.FlatList`
+    width: 110%;
+    position: absolute;
+    background-color: white;
+    top:50px;
 `

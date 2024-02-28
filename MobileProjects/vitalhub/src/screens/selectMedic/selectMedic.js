@@ -69,7 +69,7 @@ const SelectMedic = ({ navigation }) => {
             />
 
 
-            <Button onPress={() => navigation.goBack()}><ButtonTitle>CONTINUAR</ButtonTitle></Button>
+            <Button onPress={() => navigation.navigate("SelectData")}><ButtonTitle>CONTINUAR</ButtonTitle></Button>
             <LinkBlueSmall onPress={() => navigation.goBack()}>Cancelar</LinkBlueSmall>
         </WithoutHeader >
     )

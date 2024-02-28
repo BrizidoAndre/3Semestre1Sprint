@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const Title = styled.Text`
     font-size: 20px;
     color: #33303E;
@@ -51,6 +52,12 @@ export const Sand14400 = styled.Text`
     color:#8C8A97;
 `
 
+export const Sand14500 = styled.Text`
+    font-size:14px;
+    font-family: Quicksand_500Medium;
+    color:black;
+`
+
 export const Sand14500Gray = styled.Text`
     font-size:14px;
     font-family: Quicksand_500Medium;
@@ -87,6 +94,11 @@ export const Sand16500 = styled.Text`
     font-family: Quicksand_500Medium;
     color:#8C8A97;
 `
+export const Sand16500Black = styled.Text`
+    font-size:16px;
+    font-family: Quicksand_500Medium;
+    color:black;
+`
 
 export const Sand16500Date = styled.Text`
     font-size:16px;
@@ -100,6 +112,11 @@ export const Sand16500DateSelected = styled.Text`
     font-size:16px;
     font-family: Quicksand_500Medium;
     color:white;
+`
+export const Sand16600 = styled.Text`
+    font-size:16px;
+    font-family: Quicksand_600SemiBold;
+    color:black;
 `
 
 

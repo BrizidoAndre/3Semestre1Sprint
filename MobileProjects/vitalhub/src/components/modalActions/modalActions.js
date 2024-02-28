@@ -6,8 +6,8 @@ import { ModalContainer, RowContainer, Container, InputContainer } from "../cont
 import { SmallInput } from "../input/input";
 import { InputLabel } from "../input/inputLabel";
 import { LinkBlueSmall } from "../links/links";
-import { Label, Mont14600Green, Mont20600, Sand16500, Title } from "../title/title";
-import { BottomModal, GrayBackground, ImageProfile, ModalCancel, ModalMedRecord, ModalMenu } from "./styles";
+import { Label, Mont14600Green, Mont20600, Sand14500, Sand14500Gray, Sand16500, Sand16500Black, Sand16600, Title } from "../title/title";
+import { BottomModal, GrayBackground, ImageProfile, ModalCancel, ModalConfirmAppointment, ModalMedRecord, ModalMenu, TextCenter } from "./styles";
 import { AppointmentButton } from "../navButton/navButton";
 
 
@@ -65,7 +65,7 @@ export const ShowRecord = ({ item = null, hideModal = false, onPressRecord = nul
 
 export const CreateAppointment = ({ hideModal, onPressCancel, navigation }) => {
 
-   
+
 
 
 
@@ -82,11 +82,11 @@ export const CreateAppointment = ({ hideModal, onPressCancel, navigation }) => {
                 <Container>
                     <Title>Agendar Consulta</Title>
                     <InputContainer>
-                        <AppointmentLevel  />
+                        <AppointmentLevel />
 
-                        <InputLabel 
-                        title={'Informe a localização desejada'} 
-                        placeholder={"Ex: São Paulo"} />
+                        <InputLabel
+                            title={'Informe a localização desejada'}
+                            placeholder={"Ex: São Paulo"} />
                     </InputContainer>
 
                     <Button onPress={() => navigation.navigate("SelectClinic")}><ButtonTitle>CONTINUAR</ButtonTitle></Button>
@@ -98,33 +98,75 @@ export const CreateAppointment = ({ hideModal, onPressCancel, navigation }) => {
     )
 }
 
-export const AppointmentLevel = ({selectedInput = null }) => {
+export const AppointmentLevel = ({ selectedInput = null }) => {
 
     const [appointmentLevel, setAppointmentLevel] = useState({
-        exam:false,
-        urgent:false,
-        routine:false
+        exam: false,
+        urgent: false,
+        routine: false
     })
 
     return (
         <>
             <Label>Qual o nível da consulta</Label>
             <RowContainer>
-                <AppointmentButton 
-                selected={appointmentLevel.routine} 
-                buttonTitle={'Rotina'}
-                onPress={() => setAppointmentLevel({routine:true})}/>
+                <AppointmentButton
+                    selected={appointmentLevel.routine}
+                    buttonTitle={'Rotina'}
+                    onPress={() => setAppointmentLevel({ routine: true })} />
 
-                <AppointmentButton 
-                selected={appointmentLevel.exam} 
-                buttonTitle={'Exame'}
-                onPress={() => setAppointmentLevel({exam:true})}/>
+                <AppointmentButton
+                    selected={appointmentLevel.exam}
+                    buttonTitle={'Exame'}
+                    onPress={() => setAppointmentLevel({ exam: true })} />
 
-                <AppointmentButton 
-                selected={appointmentLevel.urgent} 
-                buttonTitle={'Urgência'}
-                onPress={() => setAppointmentLevel({urgent:true})}/>
+                <AppointmentButton
+                    selected={appointmentLevel.urgent}
+                    buttonTitle={'Urgência'}
+                    onPress={() => setAppointmentLevel({ urgent: true })} />
             </RowContainer>
         </>
+    )
+}
+
+
+
+export const ConfirmAppointment = ({ item, hideModal, setHideModal=null, navigation }) => {
+
+    if (!hideModal) {
+        return (
+            <></>
+        )
+    }
+
+    return (
+        <GrayBackground>
+            <ModalConfirmAppointment>
+                <ModalContainer>
+                    <Mont20600>Agendar Consulta</Mont20600>
+
+                    <TextCenter>Consulte os dados selecionados para sua consulta</TextCenter>
+
+                    <InputContainer>
+                        <Sand16600>Data da Consulta</Sand16600>
+                        <Sand14500Gray>{item.data}</Sand14500Gray>
+                        <Sand16600>Médico da consulta</Sand16600>
+                        <Sand14500Gray>{item.doctor.name}</Sand14500Gray>
+                        <Sand14500Gray>{item.doctor.specialty}</Sand14500Gray>
+                        <Sand16600>Data da Consulta</Sand16600>
+                        <Sand14500Gray>{item.location}</Sand14500Gray>
+                        <Sand16600>Data da Consulta</Sand16600>
+                        <Sand14500Gray>{item.kind}</Sand14500Gray>
+                    </InputContainer>
+
+
+                    <Button onPress={navigation.navigate("Home")} >
+                        <ButtonTitle>CONFIRMAR</ButtonTitle>
+                    </Button>
+                    <LinkBlueSmall onPress={() => setHideModal(false)}>Cancelar</LinkBlueSmall>
+
+                </ModalContainer>
+            </ModalConfirmAppointment>
+        </GrayBackground>
     )
 }

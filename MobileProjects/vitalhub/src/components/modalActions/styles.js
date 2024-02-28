@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Sand16500Black } from "../title/title";
 
 export const GrayBackground = styled.View`
     position: absolute;
@@ -31,6 +32,13 @@ export const ModalMedRecord = styled.View`
     background-color: white;
 `
 
+export const ModalConfirmAppointment = styled.View`
+    width: 90%;
+    height: 75%;
+    background-color: white;
+    border-radius: 10px;
+`
+
 export const BottomModal = styled.View`
     width: 100%;
     height: 70%;
@@ -49,4 +57,8 @@ export const ImageProfile = styled.Image`
     height: 180px;
 
     border-radius: 10px;
+`
+
+export const TextCenter = styled(Sand16500Black)`
+    text-align: center;
 `

@@ -2,7 +2,7 @@
 import image from "../../assets/img/Rectangle425.png"
 
 // Import do react
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { CalendarContainer, FlatlistContainer, HomeContainer, InputContainer, RowContainer } from "../../components/container/style"
 import { NavButtonComponent } from "../../components/navButton/navButton"
 import { ScrollView } from "react-native"
@@ -10,9 +10,10 @@ import Header from "../../components/header/header"
 import Card from "../../components/card/card"
 import { CancelAppointment, CreateAppointment, ShowRecord } from "../../components/modalActions/modalActions"
 import Appointment from "../appointment/appointment"
+import { Mont20600 } from "../../components/title/title"
+import { ProduceDate } from "../../components/calendar/calendar"
+import { getToday } from "../../../Utils"
 import Stethoscope from "../../components/stethoscope/stethoscope"
-import { Mont12500Red, Mont20600 } from "../../components/title/title"
-import Calendar, { ProduceDate } from "../../components/calendar/calendar"
 
 const Home = ({ navigation }) => {
 
@@ -32,7 +33,7 @@ const Home = ({ navigation }) => {
     const [objModalRecord, setObjModalRecord] = useState({})
 
     const [dateSelected, setDateSelected] = useState({
-        aaa: true
+        a: true
     })
 
 
@@ -136,15 +137,6 @@ const Home = ({ navigation }) => {
         }
     }
 
-    const getToday = () => {
-
-        const date = new Date();
-
-        const dateTitle = date.toLocaleString('default', { month: 'long', year: 'numeric' })
-
-        return dateTitle;
-    }
-
 
 
 
@@ -156,40 +148,40 @@ const Home = ({ navigation }) => {
                     <Mont20600>{getToday()}</Mont20600>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         <RowContainer>
-                            <ProduceDate 
-                            i={0} 
-                            selected={dateSelected.a} 
-                            onPress={() => { setDateSelected({a:true})  }}  />
+                            <ProduceDate
+                                i={0}
+                                selected={dateSelected.a}
+                                onPress={() => { setDateSelected({ a: true }) }} />
 
-                            <ProduceDate 
-                            i={1} 
-                            selected={dateSelected.b} 
-                            onPress={() => { setDateSelected({b:true})  }}  />
+                            <ProduceDate
+                                i={1}
+                                selected={dateSelected.b}
+                                onPress={() => { setDateSelected({ b: true }) }} />
 
-                            <ProduceDate 
-                            i={2} 
-                            selected={dateSelected.c} 
-                            onPress={() => { setDateSelected({c:true})  }}  />
+                            <ProduceDate
+                                i={2}
+                                selected={dateSelected.c}
+                                onPress={() => { setDateSelected({ c: true }) }} />
 
-                            <ProduceDate 
-                            i={3} 
-                            selected={dateSelected.d} 
-                            onPress={() => { setDateSelected({d:true})  }}  />
+                            <ProduceDate
+                                i={3}
+                                selected={dateSelected.d}
+                                onPress={() => { setDateSelected({ d: true }) }} />
 
-                            <ProduceDate 
-                            i={4} 
-                            selected={dateSelected.e} 
-                            onPress={() => { setDateSelected({e:true})  }}  />
+                            <ProduceDate
+                                i={4}
+                                selected={dateSelected.e}
+                                onPress={() => { setDateSelected({ e: true }) }} />
 
-                            <ProduceDate 
-                            i={5} 
-                            selected={dateSelected.f} 
-                            onPress={() => { setDateSelected({f:true})  }}  />
+                            <ProduceDate
+                                i={5}
+                                selected={dateSelected.f}
+                                onPress={() => { setDateSelected({ f: true }) }} />
 
-                            <ProduceDate 
-                            i={6} 
-                            selected={dateSelected.g} 
-                            onPress={() => { setDateSelected({g:true})  }}  />
+                            <ProduceDate
+                                i={6}
+                                selected={dateSelected.g}
+                                onPress={() => { setDateSelected({ g: true }) }} />
 
                         </RowContainer>
                     </ScrollView>
@@ -243,11 +235,7 @@ const Home = ({ navigation }) => {
                 navigation={navigation} />
 
 
-
-
-
-            <Stethoscope onPress={() => { setModal({ setAppointment: true }) }} />
-
+            <Stethoscope onPress={() => setModal({setAppointment:true})} />
 
         </>
     )

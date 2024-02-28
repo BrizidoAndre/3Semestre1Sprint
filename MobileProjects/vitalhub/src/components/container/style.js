@@ -82,7 +82,6 @@ export const RowContainer = styled.View`
     gap:10px;
 
     justify-content: space-between;
-
 `
 
 export const HeaderTextContainer = styled.View`
@@ -123,6 +122,10 @@ export const CalendarContainer = styled.View`
     width: 100%;
 
     margin: 30px 0 20px 0;
+`
 
-
+export const HideItems = styled.View`
+    width: 100%;
+    align-items: center;
+    z-index: -1;
 `

@@ -28,7 +28,6 @@ const EditProfile = ({ navigation }) => {
                         <InputLabelBlack title={"Data de nascimento"} placeholder={"04/10/1999"} />
                         <InputLabelBlack title={"CPD"} placeholder={"143553660123"} />
                         <InputLabelBlack title={"Endereço"} placeholder={"Rua dos Açores, 132"} />
-                        <InputLabelBlack title={"Data de nascimento"} placeholder={"Ex: 4"} />
 
                         <TwoInputContainer>
                             <SmallInputLabel title={"CEP"} placeholder={"XXXXXXXX"} />

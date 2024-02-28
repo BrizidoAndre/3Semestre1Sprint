@@ -56,7 +56,7 @@ export const AllCalendar = ({ selected, onPress }) => {
     const getNumberDay = (day) => {
         let date = new Date();
 
-        date.setDate(date.getDate() + day)
+        date.setDate(day - 3)
 
         let dateNumber = date.toLocaleDateString('default', { day: '2-digit' })
 
