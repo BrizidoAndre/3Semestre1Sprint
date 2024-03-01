@@ -35,7 +35,7 @@ export const CancelAppointment = ({ hideModal = false, onPressCancel = null }) =
     )
 }
 
-export const ShowRecord = ({ item = null, hideModal = false, onPressRecord = null, onPressNavigate = null }) => {
+export const ShowRecord = ({ item = null, hideModal = false, onPressCancel = null, onPressNavigate = null }) => {
 
     if (!hideModal) {
         return (<>
@@ -54,7 +54,7 @@ export const ShowRecord = ({ item = null, hideModal = false, onPressRecord = nul
                     <Button onPress={onPressNavigate}>
                         <ButtonTitle>INSERIR PRONTUÁRIO</ButtonTitle>
                     </Button>
-                    <LinkBlueSmall onPress={onPressRecord}>Cancelar</LinkBlueSmall>
+                    <LinkBlueSmall onPress={onPressCancel}>Cancelar</LinkBlueSmall>
 
                 </ModalContainer>
             </ModalMedRecord>
@@ -63,7 +63,7 @@ export const ShowRecord = ({ item = null, hideModal = false, onPressRecord = nul
 }
 
 
-export const CreateAppointment = ({ hideModal, onPressCancel, navigation }) => {
+export const CreateAppointment = ({ hideModal, onPressCancel, onPress }) => {
 
 
 
@@ -89,7 +89,7 @@ export const CreateAppointment = ({ hideModal, onPressCancel, navigation }) => {
                             placeholder={"Ex: São Paulo"} />
                     </InputContainer>
 
-                    <Button onPress={() => navigation.navigate("SelectClinic")}><ButtonTitle>CONTINUAR</ButtonTitle></Button>
+                    <Button onPress={onPress}><ButtonTitle>CONTINUAR</ButtonTitle></Button>
                     <LinkBlueSmall onPress={onPressCancel}>Cancelar</LinkBlueSmall>
                 </Container>
 
@@ -130,8 +130,34 @@ export const AppointmentLevel = ({ selectedInput = null }) => {
 }
 
 
+export const DoctorAppointment = ({ item = null, hideModal = false, onPressCancel = null, onPressNavigate = null }) => {
 
-export const ConfirmAppointment = ({ item, hideModal, setHideModal=null, navigation }) => {
+    if (!hideModal) {
+        return (<>
+        </>)
+    }
+    return (
+        <GrayBackground>
+            <ModalMedRecord>
+                <ModalContainer>
+                    <ImageProfile source={item.image} />
+                    <Mont20600>{item.name}</Mont20600>
+                    <RowContainer>
+                        <Sand16500>{item.specialty}</Sand16500>
+                        <Sand16500>CRM-{item.CRM}</Sand16500>
+                    </RowContainer>
+                    <Button onPress={onPressNavigate}>
+                        <ButtonTitle>VER LOCAL DA CONSULTA</ButtonTitle>
+                    </Button>
+                    <LinkBlueSmall onPress={onPressCancel}>Cancelar</LinkBlueSmall>
+
+                </ModalContainer>
+            </ModalMedRecord>
+        </GrayBackground>
+    )
+}
+
+export const ConfirmAppointment = ({ item, hideModal, setHideModal = null, navigation }) => {
 
     if (!hideModal) {
         return (
@@ -160,7 +186,7 @@ export const ConfirmAppointment = ({ item, hideModal, setHideModal=null, navigat
                     </InputContainer>
 
 
-                    <Button onPress={navigation.navigate("Home")} >
+                    <Button onPress={() => navigation.navigate("Home")} >
                         <ButtonTitle>CONFIRMAR</ButtonTitle>
                     </Button>
                     <LinkBlueSmall onPress={() => setHideModal(false)}>Cancelar</LinkBlueSmall>

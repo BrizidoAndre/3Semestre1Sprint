@@ -30,6 +30,7 @@ import Home from './src/screens/home/home';
 import SelectClinic from './src/screens/selectClinic/selectClinic';
 import SelectMedic from './src/screens/selectMedic/selectMedic';
 import SelectData from './src/screens/selectData/selectData';
+import ShowLocation from './src/screens/showLocation/showLocation';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -160,6 +161,11 @@ export default function App() {
         name='SelectData'
         component={SelectData}
         options={{title:'SelectData'}}/>
+
+        <Stack.Screen 
+        name='ShowLocation'
+        component={ShowLocation}
+        options={{title:'ShowLocation'}}/>
 
 
       </Stack.Navigator>

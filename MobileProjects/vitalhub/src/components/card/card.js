@@ -7,7 +7,7 @@ import { CardBox, CardBoxSelect, ClinicCardBox, ClinicCardBoxSelected, ImageCard
 import { IconWatch } from "../status/styles"
 import { useState } from "react"
 
-const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress = null }) => {
+const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress = null, onPressCard }) => {
 
     const statusCheck = () => {
         if (status === "a") {
@@ -45,7 +45,7 @@ const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress =
 
 
     return (
-        <CardBox>
+        <CardBox onPress={onPressCard}>
             <ImageCard source={image} />
             <Container>
 

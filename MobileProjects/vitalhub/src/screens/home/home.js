@@ -8,7 +8,7 @@ import { NavButtonComponent } from "../../components/navButton/navButton"
 import { ScrollView } from "react-native"
 import Header from "../../components/header/header"
 import Card from "../../components/card/card"
-import { CancelAppointment, CreateAppointment, ShowRecord } from "../../components/modalActions/modalActions"
+import { CancelAppointment, CreateAppointment, DoctorAppointment, ShowRecord } from "../../components/modalActions/modalActions"
 import Appointment from "../appointment/appointment"
 import { Mont20600 } from "../../components/title/title"
 import { ProduceDate } from "../../components/calendar/calendar"
@@ -28,6 +28,7 @@ const Home = ({ navigation }) => {
         cancel: false,
         record: false,
         setAppointment: false,
+        doctorAppointment: false
     })
     // Use state para o modal do prontuário
     const [objModalRecord, setObjModalRecord] = useState({})
@@ -41,6 +42,16 @@ const Home = ({ navigation }) => {
     const rawData = [
         {
             id: "imasdf",
+            name: 'Richard Rasmussem',
+            age: 22,
+            nivel: 'Rotina',
+            image: image,
+            email: 'emaildoe@email.com',
+            time: "14:00",
+            status: "a"
+        },
+        {
+            id: "imasdf132443",
             name: 'Richard Rasmussem',
             age: 22,
             nivel: 'Rotina',
@@ -111,6 +122,21 @@ const Home = ({ navigation }) => {
         },
     ]
 
+    const rawDataMedic = [
+        {
+            id: "imasdf",
+            name: 'Dr. Claudio',
+            specialty:'Clínico Geral',
+            CRM:'15286',
+            age: 22,
+            image: image,
+            nivel: 'Rotina',
+            email: 'emaildoe@email.com',
+            time: "14:00",
+            status: "a"
+        },
+    ]
+
     // função de filtragem dos dados 
     const checkStatus = (data) => {
         if (data.status === "a" && selected.agendadas === true) {
@@ -124,7 +150,12 @@ const Home = ({ navigation }) => {
         }
     }
 
-    const data = rawData.filter(checkStatus)
+    const showMedicAppointment = (item) => {
+        setModal({ doctorAppointment: true })
+        setObjModalRecord(item)
+    }
+
+    const data = rawDataMedic.filter(checkStatus)
 
     const showRightModal = (obj) => {
         if (obj.status === "a") {
@@ -215,7 +246,8 @@ const Home = ({ navigation }) => {
                         status={item.status}
                         time={item.time}
                         nivel={item.nivel}
-                        onPress={() => showRightModal(item)} />} />
+                        onPress={() => showRightModal(item)}
+                        onPressCard={() => showMedicAppointment(item) } />} />
 
             <CancelAppointment
                 hideModal={modal.cancel}
@@ -225,17 +257,24 @@ const Home = ({ navigation }) => {
             <ShowRecord
                 item={objModalRecord}
                 hideModal={modal.record}
-                onPressRecord={() => { setModal({ record: false }) }}
+                onPressCancel={() => { setModal({ record: false }) }}
                 onPressNavigate={() => { navigation.navigate(Appointment) }}
             />
 
             <CreateAppointment
                 hideModal={modal.setAppointment}
                 onPressCancel={() => setModal({ setAppointment: false })}
-                navigation={navigation} />
+                onPress={() => { navigation.navigate("SelectClinic"); setModal({ setAppointment: false }) }} />
+
+            <DoctorAppointment
+                hideModal={modal.doctorAppointment}
+                item={ objModalRecord}
+                onPressCancel={()=> setModal({doctorAppointment:false})}
+                onPressNavigate={()=> navigation.navigate('ShowLocation')}
+            />
 
 
-            <Stethoscope onPress={() => setModal({setAppointment:true})} />
+            <Stethoscope onPress={() => setModal({ setAppointment: true })} />
 
         </>
     )
