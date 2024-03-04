@@ -98,6 +98,17 @@ export const BigInputBlack = styled.TextInput.attrs({
     font-size:14px;
 `
 
+export const BigInputImageBlack = styled.View`
+    width: 100%;
+    height: 170px;
+    padding:16px;
+    border-radius: 5px;
+    background-color:#e5e3e3;
+
+    justify-content: center;
+    align-items:center;
+`
+
 export const Select = styled.TouchableOpacity`
     width: 100%;
     height: 50px;

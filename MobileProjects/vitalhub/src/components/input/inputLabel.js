@@ -1,21 +1,34 @@
-import { FlatList } from "react-native"
 import { SmallInputLabelContainer } from "../container/style"
 import { IconWatch } from "../status/styles"
-import { Label, Mont14600Green, Sand14600 } from "../title/title"
-import { BigInput, BigInputBlack, FlatListSelect, Input, InputBlack, Select, SelectRow, SmallInput } from "./input"
+import { Label, Mont14500Gray, Mont14600Green, Sand14600 } from "../title/title"
+import { BigInput, BigInputBlack, BigInputImageBlack, FlatListSelect, Input, InputBlack, Select, SelectRow, SmallInput } from "./input"
+import { IconCamera } from "../../screens/appointment/styles";
+import notFound from '../../assets/img/iconoir_file-not-found.png'
 
-export const InputLabelBlack = ({ title, placeholder, bigInput = false }) => {
+export const InputLabelBlack = ({ title, placeholder, bigInput = false, value }) => {
     return (
         <>
             <Label>{title}</Label>
             {bigInput ?
-                <BigInputBlack placeholder={placeholder} /> :
-                <InputBlack placeholder={placeholder} />}
+                <BigInputBlack placeholder={placeholder} value={value} /> :
+                <InputBlack placeholder={placeholder} value={value} />}
         </>
     )
 }
 
-export const InputLabel = ({ title, placeholder, bigInput = false }) => {
+export const InputLabelImageBlack = ({ title }) => {
+    return (
+        <>
+            <Label>{title}</Label>
+            <BigInputImageBlack>
+                <Mont14500Gray> 
+                <IconCamera source={notFound} />  Nenhuma foto informada</Mont14500Gray>
+            </BigInputImageBlack>
+        </>
+    )
+}
+
+export const InputLabel = ({ title, placeholder, bigInput = false, value }) => {
     return (
         <>
             <Label>{title}</Label>
@@ -23,18 +36,18 @@ export const InputLabel = ({ title, placeholder, bigInput = false }) => {
             {bigInput ?
                 <BigInput
                     multiline={true}
-                    placeholder={placeholder} /> :
-                <Input placeholder={placeholder} />
+                    placeholder={placeholder} value={value} /> :
+                <Input placeholder={placeholder} value={value} />
             }
         </>
     )
 }
 
-export const SmallInputLabel = ({ title, placeholder }) => {
+export const SmallInputLabel = ({ title, placeholder, value }) => {
     return (
         <SmallInputLabelContainer>
             <Label>{title}</Label>
-            <InputBlack placeholder={placeholder} />
+            <InputBlack placeholder={placeholder} value={value} />
         </SmallInputLabelContainer>
     )
 }
@@ -53,10 +66,10 @@ export const SelectLabel = ({ title, placeholder, item, hideSelect, setHideSelec
     )
 }
 
-export const SelectCard = ({time, onPress, setHideSelect}) => {
-    
-    return(
-        <SelectRow onPress={() => {onPress(time); setHideSelect(false)}}>
+export const SelectCard = ({ time, onPress, setHideSelect }) => {
+
+    return (
+        <SelectRow onPress={() => { onPress(time); setHideSelect(false) }}>
             <Mont14600Green>{time}</Mont14600Green>
         </SelectRow>
     )
@@ -64,15 +77,15 @@ export const SelectCard = ({time, onPress, setHideSelect}) => {
 
 export const SelectModal = ({ item, hideSelect, onPress, setHideSelect }) => {
 
-    if(!hideSelect){
-        return(
+    if (!hideSelect) {
+        return (
             <></>
         )
     }
     return (
         <FlatListSelect
             data={item}
-            renderItem={ ({item}) => <SelectCard onPress={onPress} setHideSelect={setHideSelect} time={item} /> }
+            renderItem={({ item }) => <SelectCard onPress={onPress} setHideSelect={setHideSelect} time={item} />}
         />
     )
 }

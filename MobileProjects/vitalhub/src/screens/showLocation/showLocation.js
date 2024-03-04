@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { Dimensions } from "react-native";
 import MapView from 'react-native-maps';
-import { Button } from "../../components/button/button";
-import { ButtonTitle } from "../../components/button/buttonTitle";
 import { Marker } from 'react-native-maps';
-import { CalendarContainer, Container, InputContainer, RowContainer, WithoutHeader } from "../../components/container/style";
+import { CalendarContainer, InputContainer, RowContainer } from "../../components/container/style";
 import { Sand14600, Title } from "../../components/title/title";
-import { InputLabel, InputLabelBlack, SmallInputLabel } from "../../components/input/inputLabel";
+import { InputLabelBlack, SmallInputLabel } from "./styles";
 
 
 const ShowLocation = ({ }) => {
@@ -47,11 +45,11 @@ const ShowLocation = ({ }) => {
                 <Title>CLinicaNatureh</Title>
                 <Sand14600>Teste</Sand14600>
                 <InputContainer>
-                    <InputLabelBlack title={"Endereço"} placeholder={'Rua Exemplo Nº'} />
+                    <InputLabelBlack  title={"Endereço"} text={'Rua Exemplo Nº'} />
                 </InputContainer>
                 <RowContainer>
-                    <SmallInputLabel placeholder={'bananas'} title={'Titulo'} />
-                    <SmallInputLabel placeholder={'bananas'} title={'Titulo'} />
+                    <SmallInputLabel title={'Número'} text={143} />
+                    <SmallInputLabel title={'Bairro'} text={'Moema-SP'} />
                 </RowContainer>
             </CalendarContainer>
         </>

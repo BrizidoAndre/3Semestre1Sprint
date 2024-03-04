@@ -31,6 +31,7 @@ import SelectClinic from './src/screens/selectClinic/selectClinic';
 import SelectMedic from './src/screens/selectMedic/selectMedic';
 import SelectData from './src/screens/selectData/selectData';
 import ShowLocation from './src/screens/showLocation/showLocation';
+import MedicalRecord from './src/screens/medicalRecord/medicalRecord';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -166,7 +167,6 @@ export default function App() {
         name='ShowLocation'
         component={ShowLocation}
         options={{title:'ShowLocation'}}/>
-
 
       </Stack.Navigator>
 

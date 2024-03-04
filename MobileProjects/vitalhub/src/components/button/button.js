@@ -38,6 +38,26 @@ margin-bottom: 10px;
 background-color: #496BBA;
 `;
 
+export const SmallButtonGreen = styled.TouchableHighlight`
+
+width: 40%;
+height: 53px;
+padding: 16px;
+border-radius: 5px;
+border: none;
+margin-bottom: 10px;
+background-color: #49B3BA;
+`;
+
+export const SmallButtonTransparentContainer = styled.View`
+width: 40%;
+height: 53px;
+
+display: flex;
+justify-content:center;
+align-items:center;
+`;
+
 export const NavButton = styled.TouchableHighlight`
     width: 110px;
     height: 40px;

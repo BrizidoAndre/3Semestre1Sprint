@@ -25,9 +25,10 @@ const Navigation = ({ navigation }) => {
             />
             
             <Button 
-                title="View Map"
-                onPress={() => navigation.navigate("ShowLocation")}
+                title="SelectData"
+                onPress={() => navigation.navigate("SelectData")}
             />
+            
         </View>
     );
 }

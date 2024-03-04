@@ -84,6 +84,15 @@ export const RowContainer = styled.View`
     justify-content: space-between;
 `
 
+export const RowFullContainer = styled.View`
+    display: flex;
+    flex-direction:row;
+    gap:10px;
+    width: 100%;
+
+    justify-content: space-between;
+`
+
 export const HeaderTextContainer = styled.View`
     display: flex;
     align-items:flex-start;
@@ -128,4 +137,12 @@ export const HideItems = styled.View`
     width: 100%;
     align-items: center;
     z-index: -1;
+`
+
+export const RowAlign = styled.View`
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content: space-around;
 `

@@ -132,6 +132,16 @@ export const Mont12500Blue = styled.Text`
     font-family: MontserratAlternates_500Medium;
     color: #344F8F;
 `
+export const Mont14500 = styled.Text`
+    font-size: 14px;
+    color: #000;
+    font-family: MontserratAlternates_500Medium;
+`
+export const Mont14500Gray = styled.Text`
+    font-size: 14px;
+    color: #4E4B59;
+    font-family: MontserratAlternates_500Medium;
+`
 
 export const Mont14600White = styled.Text`
     font-size: 14px;
