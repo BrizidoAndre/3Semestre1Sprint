@@ -56,22 +56,25 @@ export const AllCalendar = ({ selected, onPress }) => {
     }
 
     const getNumberDay = (day) => {
-        let date = new Date();
-        date.setDate(day)
+        let today = new Date();
+        let varDay = new Date();
 
-        let dateNumber = date.toLocaleDateString('default', { day: '2-digit' })
-
-        return dateNumber
+        varDay.setDate(today.getDate() + day)
+        
+        let numeric = varDay.toLocaleDateString('default', { day: '2-digit' })
+        return numeric
     }
 
     let days = [];
     let daysIndex = [];
 
     const getAllDays = () => {
+        
 
         for (let i = 0; i < 35; i++) {
+
             days.push(
-                <Sand16500Date onPress={() => onPress(i)}>{getNumberDay(i)}</Sand16500Date>
+                <Sand16500Date onPress={() => {onPress(i)}}>{getNumberDay(i)}</Sand16500Date>
             )
             daysIndex.push(getNumberDay(i));
         }

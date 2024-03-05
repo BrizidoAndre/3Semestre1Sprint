@@ -11,6 +11,14 @@ import { IconBack } from "../../components/iconBack/iconBack";
 import CreateAccount from "../createAccount/createAccount";
 
 const Login = ({ navigation }) => {
+
+    function Login(){
+        navigation.navigate("Main")
+    }
+
+
+
+
     return (
         <Container>
 
@@ -31,7 +39,7 @@ const Login = ({ navigation }) => {
             </InputContainer>
 
 
-            <Button>
+            <Button onPress={()=>Login()}>
                 <ButtonTitle>ENTRAR</ButtonTitle>
             </Button>
 

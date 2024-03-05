@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "../../components/button/button"
 import { ButtonTitle } from "../../components/button/buttonTitle"
 import { AllCalendar } from "../../components/calendar/calendar"
@@ -10,6 +10,7 @@ import { ConfirmAppointment } from "../../components/modalActions/modalActions"
 
 
 const SelectData = ({ navigation }) => {
+
 
 
     // state do modal de confirmação
@@ -33,6 +34,8 @@ const SelectData = ({ navigation }) => {
         location: 'Lugar de teste',
         kind: 'Tipo de teste',
     })
+
+    
 
     
 

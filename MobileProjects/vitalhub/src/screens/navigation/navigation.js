@@ -29,6 +29,7 @@ const Navigation = ({ navigation }) => {
                 onPress={() => navigation.navigate("SelectData")}
             />
             
+            
         </View>
     );
 }
