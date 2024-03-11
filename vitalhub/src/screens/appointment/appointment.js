@@ -12,8 +12,8 @@ import { IconCamera, Line, LinkReturn } from "./styles"
 import camera from '../../assets/img/mdi_camera-plus-outline.png'
 
 
-
-const Appointment = ({ navigation, medic=false }) => {
+// VARIÁVEL NA PÁGINA PARA VERIFICAR SE O USUÁRIO É MÉDICO OU NÃO
+const Appointment = ({ navigation, medic=true }) => {
     return (
         <Container>
             {!medic ?

@@ -165,8 +165,6 @@ const Home = ({ navigation }) => {
 
 
     // Dados mocados para teste do flatlist
-    
-
     // Dador mocados para mostragem do perfil
     const profile = {
         name:'Richard Rasmusse'
