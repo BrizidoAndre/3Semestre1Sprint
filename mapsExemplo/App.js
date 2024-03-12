@@ -1,9 +1,10 @@
 import {
   requestForegroundPermissionsAsync, //solicita acesso a localização atual do dispositivo
   getCurrentPositionAsync, // recebe a localização atual do dispositivo 
-
+  watchPositionAsync, //Monitorar o posicionamento do usuário
+  LocationAccuracy //
 } from 'expo-location'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 // importando dependencias do mapa
@@ -13,19 +14,26 @@ import { mapskey } from './utils/mapsApiKey';
 
 export default function App() {
 
+  const mapReference = useRef(null)
   const [initialPosition, setInitialPosition] = useState(null)
+  const [finalPosition, setFinalPosition] = useState({
+    latitude: -23.5612,
+    longitude: -46.6557,
+  })
 
-  async function CapturarLocalizacao() {
+  // função para pedir acesso ao Usuário e obter sua localização atual
+  async function capturarLocalizacao() {
     const { granted } = await requestForegroundPermissionsAsync()
 
+    // se permissão concedida receber posição atual
     if (granted) {
       const captureLocation = await getCurrentPositionAsync()
-
       setInitialPosition(captureLocation);
     }
+
   }
 
-
+  //  constante para estilizar o mapa de acordo com nosso tema
   const grayMapStyle = [
     {
       elementType: "geometry",
@@ -248,12 +256,54 @@ export default function App() {
       ],
     },
   ];
-  
+
 
 
   useEffect(() => {
-    CapturarLocalizacao()
-  }, [100])
+    capturarLocalizacao()
+
+    // função para buscar a posição do usuario a cada instante
+    watchPositionAsync({
+      accuracy: LocationAccuracy.Highest,
+      timeInterval: 1000,
+      distanceInterval: 1
+    }, //função para setar a posição inicial a cada instante que obtemos a posição do usuário
+      async (response) => {
+        // recebe e guarda a nova função
+        await setInitialPosition(response)
+
+
+        // função para atualizar a posição do mapa de acordo com a posição do usuário
+        mapReference.current?.animateCamera({
+          pitch: 60,
+          center: response.coords
+        })
+      })
+  }, [1000])
+
+  useEffect(() => {
+    recarregarVisualizacaoMapa()
+  }, [initialPosition])
+
+
+
+  // função para mostrar o ponto central entre os dois marcadores que definimos
+  async function recarregarVisualizacaoMapa() {
+
+    if (mapReference.current && initialPosition) {
+      await mapReference.current.fitToCoordinates(
+        [
+          { latitude: initialPosition.coords.latitude, longitude: initialPosition.coords.longitude },
+          { latitude: finalPosition.latitude, longitude: finalPosition.longitude }
+        ],
+        {
+          edgePadding: { top: 60, right: 60, bottom: 60, left: 60 },
+          animated: true
+        }
+      )
+    }
+
+  }
 
   return (
     <View style={styles.container}>
@@ -264,6 +314,8 @@ export default function App() {
 
         <>
           <MapView
+            ref={mapReference}
+
             initialRegion={{
               latitude: initialPosition.coords.latitude,
               longitude: initialPosition.coords.longitude,
@@ -274,34 +326,35 @@ export default function App() {
             customMapStyle={grayMapStyle}
           >
 
-            <Marker 
-            coordinate={{
-              latitude: initialPosition.coords.latitude,
-              longitude: initialPosition.coords.longitude,
-            }}
+            <Marker
+              coordinate={{
+                latitude: initialPosition.coords.latitude,
+                longitude: initialPosition.coords.longitude,
+              }}
               title='Você está aqui'
-              pinColor={'green'}
+              pinColor={'purple'}
             />
 
+            {/* o que realiza a busca do caminho entre dois pontos */}
             <MapViewDirections
-            origin={ initialPosition.coords }
-            destination={{
-              latitude: -23.5612,   
-              longitude: -46.6557,
-              latitudeDelta: 0.0050,
-              longitudeDelta: 0.0050,
-            }}
-            strokeWidth={3}
-            strokeColor='#5218FA'
-            apikey={mapskey} 
+              origin={initialPosition.coords}
+              destination={{
+                latitude: -23.5612,
+                longitude: -46.6557,
+                latitudeDelta: 0.0050,
+                longitudeDelta: 0.0050,
+              }}
+              strokeWidth={3}
+              strokeColor='#5218FA'
+              apikey={mapskey}
             />
 
 
-            <Marker 
-            coordinate={{
-              latitude: -23.5612,   
-              longitude: -46.6557,
-            }}
+            <Marker
+              coordinate={{
+                latitude: -23.5612,
+                longitude: -46.6557,
+              }}
               title='Seu destino'
             />
 

@@ -140,7 +140,7 @@ const Home = ({ navigation }) => {
     ]
 
     //! VER SE O USUÁRIO É UM MÉDICO
-    const [isMedic, setIsMedic] = useState(true); 
+    const [isMedic, setIsMedic] = useState(false); 
 
 
     // use states para os agendados realizado e cancelado

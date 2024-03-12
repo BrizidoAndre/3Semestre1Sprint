@@ -65,6 +65,11 @@ export default function App() {
       {/* componente para navegação */}
       <Stack.Navigator screenOptions={{ headerShown: false }}>
 
+      <Stack.Screen 
+        name='ShowLocation'
+        component={ShowLocation}
+        options={{title:'ShowLocation'}}/>
+
         {/* tela Login */}
         <Stack.Screen
           // navegação
@@ -158,10 +163,7 @@ export default function App() {
         component={SelectData}
         options={{title:'SelectData'}}/>
 
-        <Stack.Screen 
-        name='ShowLocation'
-        component={ShowLocation}
-        options={{title:'ShowLocation'}}/>
+
 
       </Stack.Navigator>
 
