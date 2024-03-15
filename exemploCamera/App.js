@@ -14,18 +14,48 @@ export default function App() {
   // Use states para o flash
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off)
   const [flashBoll, setFlashBoll] = useState(false)
+  // Use states para o focus
+  const [focus, setFocus] = useState(Camera.Constants.AutoFocus.on)
+  const [focusBoll, setFocusBoll] = useState(true)
 
   // Use state para ver a gravação em andamento
   const [record, setRecord] = useState(false)
+  const [video, setVideo] = useState(null)
 
   // Use state do tipo da camera
   const [camera, setCamera] = useState(Camera.Constants.Type.back)
 
 
-  async function CaptureVideo(){
-    if(cameraRef){
-      const video = await cameraRef.current.recordAsync();
+
+
+  async function CaptureVideo() {
+    if (cameraRef) {
       setRecord(true);
+      const video = await cameraRef.current.recordAsync()
+      setVideo(video.uri)
+      console.log(video.uri);
+    }
+
+  }
+
+  async function CloseVideo() {
+    if (cameraRef) {
+      setRecord(false);
+      const video = await cameraRef.current.stopRecording();
+    }
+
+  }
+
+  // Acho que esta função não está sendo utilizada
+  async function SaveVideo() {
+    if (video) {
+      await MediaLibrary.createAssetAsync(video)
+        .then(() => {
+          Alert.alert('Sucesso', 'Video salvo na galeria')
+        })
+        .catch(error => {
+          alert("Erro ao processar video")
+        })
     }
   }
 
@@ -65,12 +95,17 @@ export default function App() {
     }
   }
 
-  /**
-   quando salvar a foto - poder apagar da galeria ---FAZENDO
-   botão para ativar o flash --- FEITO
-   forma de recarregar o autofocus
-   * Aplicando o vídeo no projeto ---FEITO ?
-   */
+  function TurnFocus(){
+    if(focusBoll){
+      setFocus(Camera.Constants.AutoFocus.off)
+      setFocusBoll(false)
+    }
+    else{
+      setFocus(Camera.Constants.AutoFocus.on)
+      setFocusBoll(true)
+    }
+  }
+
 
   async function savePhoto() {
     if (photo) {
@@ -87,15 +122,37 @@ export default function App() {
   }
 
 
+  /**
+    quando salvar a foto - poder apagar da galeria ---FEITO
+    botão para ativar o flash --- FEITO
+    forma de recarregar o autofocus --- 
+    * Aplicando o vídeo no projeto ---FEITO ?
+    */
+
+
   useEffect(() => {
     (async () => {
       const { status: cameraStatus } = await Camera.requestCameraPermissionsAsync();
-      
+
       const { status: microphoneStatus } = await Camera.requestMicrophonePermissionsAsync();
 
       const { status: mediaStatus } = await MediaLibrary.requestPermissionsAsync()
     })()
-  }, [])
+
+    // Condicional para cada vez que um vídeo for realizado salvar na media
+    if (video) {
+
+      MediaLibrary.createAssetAsync(video)
+        .then(() => {
+          Alert.alert('Sucesso', 'Video salvo na galeria')
+        })
+        .catch(error => {
+          alert("Erro ao processar foto")
+        })
+    }
+
+
+  }, [video])
 
 
   return (
@@ -109,6 +166,7 @@ export default function App() {
         ratio={'16:9'}
         ref={cameraRef}
         flashMode={flash}
+        autoFocus={focus}
       >
 
         <View style={styles.viewFlip}>
@@ -124,23 +182,53 @@ export default function App() {
 
       <View style={{ flexDirection: 'row' }}>
 
-        <TouchableOpacity
-          style={styles.btnCaptura}
-          onPress={() => CaptureVideo()}>
-          <FontAwesome name='circle-o-notch' size={23} color={'#fff'} />
-        </TouchableOpacity>
+        {record ?
+          <>
 
-        <TouchableOpacity
-          style={styles.btnCaptura}
-          onPress={() => CapturePhoto()}>
-          <FontAwesome name='camera' size={23} color={'#fff'} />
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.btnCaptura}
-          onPress={() => { TurnFlash() }}>
-          <FontAwesome name='bolt' size={23} color={flashBoll ? 'white' : 'gray'} />
-        </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.btnCaptura}
+              onPress={() => { CloseVideo(); SaveVideo() }}>
+              <FontAwesome name='circle-o-notch' size={23} color={'#fff'} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.btnCaptura}
+              onPress={() => { TurnFlash() }}>
+              <FontAwesome name='square-o' size={23} color={focusBoll ? 'white' : 'gray'} />
+            </TouchableOpacity>
+
+
+          </> : <>
+
+
+            <TouchableOpacity
+              style={styles.btnCaptura}
+              onPress={() => CaptureVideo()}>
+              <FontAwesome name='circle-o-notch' size={23} color={'#fff'} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.btnCaptura}
+              onPress={() => { TurnFocus() }}>
+              <FontAwesome name='square-o' size={23} color={focusBoll ? 'white' : 'gray'} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.btnCaptura}
+              onPress={() => CapturePhoto()}>
+              <FontAwesome name='camera' size={23} color={'#fff'} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.btnCaptura}
+              onPress={() => { TurnFlash() }}>
+              <FontAwesome name='bolt' size={23} color={flashBoll ? 'white' : 'gray'} />
+            </TouchableOpacity>
+          </>
+        }
+
+
 
       </View>
 

@@ -1,14 +1,15 @@
 import { useState } from "react";
-import SelectClinic from "../../screens/selectClinic/selectClinic";
 import { Button } from "../button/button";
 import { ButtonTitle } from "../button/buttonTitle";
 import { ModalContainer, RowContainer, Container, InputContainer, BottomCancelContainer } from "../container/style";
-import { SmallInput } from "../input/input";
 import { InputLabel } from "../input/inputLabel";
 import { LinkBlueSmall } from "../links/links";
-import { Label, Mont14600Green, Mont20600, Mont24600, Mont28600, Sand14500, Sand14500Gray, Sand16500, Sand16500Black, Sand16600, Title } from "../title/title";
-import { BottomModal, GrayBackground, ImageProfile, ModalCancel, ModalConfirmAppointment, ModalMedRecord, ModalMenu, TextCenter } from "./styles";
+import { Label, Mont20600, Mont24600, Sand14500Gray, Sand16500, Sand16600, Title } from "../title/title";
+import { BottomModal, GrayBackground, ImageProfile, ModalCancel, ModalConfirmAppointment, ModalMedRecord, TextCenter, TrueModal } from "./styles";
 import { AppointmentButton } from "../navButton/navButton";
+
+// import das bibliotecas
+import { Camera } from "expo-camera";
 
 
 export const CancelAppointment = ({ hideModal = false, onPressCancel = null }) => {
@@ -195,5 +196,31 @@ export const ConfirmAppointment = ({ item, hideModal, setHideModal = null, navig
                 </ModalContainer>
             </ModalConfirmAppointment>
         </GrayBackground>
+    )
+}
+
+
+
+export const CameraModal = ({ openModal, cameraRef }) => {
+
+    
+
+
+    return (
+        <TrueModal
+            presentationStyle={"pageSheet"}
+            statusBarTranslucent={true}
+            animationType="slide"
+            transparent={false}
+            visible={openModal}>
+            <Camera
+                type={Camera.Constants.Type.back}
+                style={{ width: "100%",flex:1 }}
+                ratio={'16:9'}
+                ref={cameraRef}>
+
+
+            </Camera>
+        </TrueModal>
     )
 }

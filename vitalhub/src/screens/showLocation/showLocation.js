@@ -5,9 +5,10 @@ import { Marker } from 'react-native-maps';
 import { CalendarContainer, Center, InputContainer, RowContainer } from "../../components/container/style";
 import { Sand14600, Title } from "../../components/title/title";
 import { InputLabelBlack, SmallInputLabel } from "./styles";
-import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from "expo-location";
+import { LocationAccuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync, watchPositionAsync } from "expo-location";
 import MapViewDirections from "react-native-maps-directions";
 import { mapsKey } from "../../../Utils";
+import { HeaderContainer } from "../../components/header/styles";
 
 
 const ShowLocation = ({ }) => {
@@ -36,27 +37,46 @@ const ShowLocation = ({ }) => {
 
     useEffect(() => {
         capturarLocalizacao()
+
+        // Função para obter a posição do usuário a cada instante
+        watchPositionAsync({
+            accuracy: LocationAccuracy.Highest,
+            timeInterval: 1000,
+            distanceInterval: 1,
+        }, //função para setar a posição inicial a cada instante que obtiver a posição do usuário
+            async (response) => {
+                // recebe e guarda a nova função 
+                await setInitialPosition(response)
+
+
+                // função para atualizar a posição do mapa de acordo com a posição do usuário
+                mapReference.current?.animateCamera({
+                    pitch: 60,
+                    center: response.coords
+                })
+            })
     }, [1000])
 
-    useEffect(()=>{
+    useEffect(() => {
         recarregarVisualizacaoMapa()
-    },[initialPosition])
+    }, [initialPosition])
 
-    // função para centralizar os dois pontos no mapa
-    async function recarregarVisualizacaoMapa(){
+    // função para mostrar o ponto central entre os dois marcadores que definimos
+    async function recarregarVisualizacaoMapa() {
 
-        if(mapReference.current && initialPosition){
+        if (mapReference.current && initialPosition) {
             await mapReference.current.fitToCoordinates(
                 [
-                    {latitude:initialPosition.coords.latitude,longitude:initialPosition.coords.longitude},
-                    {latitude: finalPosition.latitude, longitude:finalPosition.longitude}
+                    { latitude: initialPosition.coords.latitude, longitude: initialPosition.coords.longitude },
+                    { latitude: finalPosition.latitude, longitude: finalPosition.longitude }
                 ],
                 {
-                    edgePadding:{top: 60, right: 60, bottom: 60, left:60},
+                    edgePadding: { top: 60, right: 60, bottom: 60, left: 60 },
                     animated: true
                 }
             )
         }
+
     }
 
 
@@ -291,6 +311,7 @@ const ShowLocation = ({ }) => {
 
                 <>
                     <MapView
+                    ref={mapReference}
                         style={
                             {
                                 width: Dimensions.get('window').width,
@@ -327,6 +348,7 @@ const ShowLocation = ({ }) => {
                         {/* Marcador para o destino */}
                         <Marker
                             coordinate={finalPosition}
+                            title="Seu destino"
                         />
 
                     </MapView>
@@ -341,12 +363,12 @@ const ShowLocation = ({ }) => {
                             <SmallInputLabel title={'Bairro'} text={'Moema-SP'} />
                         </RowContainer>
                     </CalendarContainer>
-                </> : <Center>
+                </> : <HeaderContainer>
 
                     <Text>Carregando localização</Text>
                     <ActivityIndicator />
 
-                </Center>}
+                </HeaderContainer>}
 
         </>
     )

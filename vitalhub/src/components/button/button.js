@@ -38,7 +38,7 @@ margin-bottom: 10px;
 background-color: #496BBA;
 `;
 
-export const SmallButtonGreen = styled.TouchableHighlight`
+export const SmallButtonGreen = styled.TouchableOpacity`
 
 width: 40%;
 height: 53px;
@@ -49,7 +49,7 @@ margin-bottom: 10px;
 background-color: #49B3BA;
 `;
 
-export const SmallButtonTransparentContainer = styled.TouchableHighlight`
+export const SmallButtonTransparentContainer = styled.View`
 width: 40%;
 height: 53px;
 

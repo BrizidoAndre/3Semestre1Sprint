@@ -1,3 +1,8 @@
+// importando biblioteca
+import { Camera } from "expo-camera"
+import * as MediaLibrary from 'expo-media-library'
+
+// Importando componentes
 import { Button, SmallButtonGreen, SmallButtonTransparentContainer } from "../../components/button/button"
 import { ButtonTitle } from "../../components/button/buttonTitle"
 import { Container, InputContainer, RowAlign, RowFullContainer } from "../../components/container/style"
@@ -9,14 +14,58 @@ import ScrollViewProfile from "../../components/scrollViewProfile/scrollViewProf
 import { Mont12500Red, Mont14600White, Sand14500Gray, SubTitle, Title } from "../../components/title/title"
 import { IconCamera, Line, LinkReturn } from "./styles"
 
-import camera from '../../assets/img/mdi_camera-plus-outline.png'
+// Importando imagens
+import cameraImage from '../../assets/img/mdi_camera-plus-outline.png'
+
+// Importando React
+import { Alert, Modal } from "react-native"
+import { useEffect, useRef, useState } from "react"
+import { CameraModal } from "../../components/modalActions/modalActions"
 
 
 // VARIÁVEL NA PÁGINA PARA VERIFICAR SE O USUÁRIO É MÉDICO OU NÃO
-const Appointment = ({ navigation, medic=true }) => {
+const Appointment = ({ navigation, medic = true }) => {
+
+    // constante para referências
+    const cameraRef = useRef(null)
+    // constante para a imagem ficar salva
+    const [photo, setPhoto] = useState(null)
+    // Use state para o tipo da camera
+    const [camera, setCamera] = useState(Camera.Constants.Type.back)
+
+    // Use state para os modais
+    const [openModal, setOpenModal] = useState(false)
+
+
+
+    async function capturePhoto(){
+        if(cameraRef){
+            const image = await cameraRef.current.takePictureAsync();
+            setPhoto(image.uri)
+            setOpenModal(true)
+        }
+    }
+
+
+
+
+    // Use effect para a requisição das permissões
+    useEffect(() => {
+        (async () => {
+
+            const { status: cameraStatus } = await Camera.requestCameraPermissionsAsync();
+            const { status: mediaStatus } = await MediaLibrary.requestPermissionsAsync();
+
+        })()
+
+    }, [])
+
+
+
+
     return (
         <Container>
-            {!medic ?
+            {medic ?
                 <>
                     <IconReturn navigation={navigation} />
 
@@ -47,9 +96,9 @@ const Appointment = ({ navigation, medic=true }) => {
                                     title={"Exames médicos"} />
 
                                 <RowFullContainer>
-                                    <SmallButtonGreen>
+                                    <SmallButtonGreen onPress={() => setOpenModal(true)} >
                                         <RowAlign>
-                                            <IconCamera source={camera} />
+                                            <IconCamera source={cameraImage} />
                                             <Mont14600White>Enviar</Mont14600White>
                                         </RowAlign>
                                     </SmallButtonGreen>
@@ -64,9 +113,12 @@ const Appointment = ({ navigation, medic=true }) => {
                             </InputContainer>
 
 
-                            <LinkReturn onPress={()=>{navigation.goBack()}}>Voltar</LinkReturn>
+                            <LinkReturn onPress={() => { navigation.goBack() }}>Voltar</LinkReturn>
                         </Container>
                     </ScrollViewProfile>
+
+
+                    <CameraModal openModal={openModal} cameraRef={cameraRef} />
                 </>
                 :
                 <>

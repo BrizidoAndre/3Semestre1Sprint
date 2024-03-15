@@ -62,3 +62,8 @@ export const ImageProfile = styled.Image`
 export const TextCenter = styled(Sand16500Black)`
     text-align: center;
 `
+
+export const TrueModal = styled.Modal`
+align-items: center;
+justify-content:space-between;
+`

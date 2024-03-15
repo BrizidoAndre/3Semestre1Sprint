@@ -11,11 +11,11 @@ import {
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
-import { 
+import {
   Quicksand_600SemiBold,
-  Quicksand_700Bold, 
+  Quicksand_700Bold,
   Quicksand_500Medium,
-  Quicksand_400Regular, 
+  Quicksand_400Regular,
 } from '@expo-google-fonts/quicksand'
 
 
@@ -65,10 +65,12 @@ export default function App() {
       {/* componente para navegação */}
       <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-      <Stack.Screen 
-        name='ShowLocation'
-        component={ShowLocation}
-        options={{title:'ShowLocation'}}/>
+
+        <Stack.Screen
+          name='Appointment'
+          component={Appointment}
+          options={{ title: "Appointment" }}
+        />
 
         {/* tela Login */}
         <Stack.Screen
@@ -79,10 +81,10 @@ export default function App() {
           // título da tela
           options={{ title: "Login" }} />
 
-          {/* Tela main */}
-        <Stack.Screen 
-        name='Main'
-        component={Main}/>
+        {/* Tela main */}
+        <Stack.Screen
+          name='Main'
+          component={Main} />
 
         {/* recuperar senha */}
         <Stack.Screen
@@ -125,15 +127,12 @@ export default function App() {
           options={{ title: "Profile" }}
         />
 
+
+
         <Stack.Screen
-          name='Appointment'
-          component={Appointment}
-          options={{ title: "Appointment" }}
-        />
-        <Stack.Screen 
           name='EditAppointment'
           component={EditAppointment}
-          options={{title: "EditAppointment"}}
+          options={{ title: "EditAppointment" }}
         />
 
         <Stack.Screen
@@ -145,25 +144,28 @@ export default function App() {
         <Stack.Screen
           name='Home'
           component={Home}
-          options={{title: 'Home'}}
+          options={{ title: 'Home' }}
         />
 
-        <Stack.Screen 
-         name='SelectClinic'
-         component={SelectClinic}
-         options={{title:'SelectClinic'}}/>
+        <Stack.Screen
+          name='SelectClinic'
+          component={SelectClinic}
+          options={{ title: 'SelectClinic' }} />
 
-        <Stack.Screen 
-        name='SelectMedic'
-        component={SelectMedic}
-        options={{title:'SelectMedic'}} />
+        <Stack.Screen
+          name='SelectMedic'
+          component={SelectMedic}
+          options={{ title: 'SelectMedic' }} />
 
-        <Stack.Screen 
-        name='SelectData'
-        component={SelectData}
-        options={{title:'SelectData'}}/>
+        <Stack.Screen
+          name='SelectData'
+          component={SelectData}
+          options={{ title: 'SelectData' }} />
 
-
+        <Stack.Screen
+          name='ShowLocation'
+          component={ShowLocation}
+          options={{ title: 'ShowLocation' }} />
 
       </Stack.Navigator>
 
