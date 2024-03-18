@@ -89,3 +89,10 @@ export const MedicCardBox = styled.View`
     
     gap:10px
 `
+
+export const Container = styled.SafeAreaView`
+flex: 1;
+align-items: center;
+background-color: #fff;
+justify-self: center;
+`

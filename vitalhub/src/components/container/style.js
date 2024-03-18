@@ -158,3 +158,18 @@ export const BottomCancelContainer = styled.View`
     align-items: center;
 
 `
+
+export const BottomRowButtonContainer = styled.View`
+    width:80%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+
+    gap: 30px;
+
+
+    position: absolute;
+    bottom: 20px;
+    align-self:center;
+    ;
+`

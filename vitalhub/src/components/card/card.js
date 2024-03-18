@@ -1,11 +1,7 @@
-import { TouchableOpacity, View } from "react-native"
-import { Center, Container, ModalContainer, RowContainer } from "../container/style"
-import { NavButtonComponent } from "../navButton/navButton"
-import Status, { StatusData, StatusGray, StatusGreen, StatusStar } from "../status/status"
-import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, Sand14500Gray, Sand14600, SubTitle, Title } from "../title/title"
-import { CardBox, CardBoxSelect, ClinicCardBox, ClinicCardBoxSelected, ImageCard, ItemCardBox, MedicCardBox, RowCardBox, TextCardBox } from "./styles"
-import { IconWatch } from "../status/styles"
-import { useState } from "react"
+import { Center } from "../container/style"
+import { StatusData, StatusGray, StatusGreen, StatusStar } from "../status/status"
+import { Mont12500Blue, Mont12500Red, Mont16600, Sand14400, Sand14500Gray, Sand14600 } from "../title/title"
+import { CardBox, CardBoxSelect, ClinicCardBox, ClinicCardBoxSelected, Container, ImageCard, ItemCardBox, MedicCardBox, RowCardBox, TextCardBox } from "./styles"
 
 const Card = ({ name, age, image, nivel, time = "14:00", status = "c", onPress = null, onPressCard }) => {
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../button/button";
 import { ButtonTitle } from "../button/buttonTitle";
-import { ModalContainer, RowContainer, Container, InputContainer, BottomCancelContainer } from "../container/style";
+import { ModalContainer, RowContainer, Container, InputContainer, BottomCancelContainer, BottomRowButtonContainer } from "../container/style";
 import { InputLabel } from "../input/inputLabel";
 import { LinkBlueSmall } from "../links/links";
 import { Label, Mont20600, Mont24600, Sand14500Gray, Sand16500, Sand16600, Title } from "../title/title";
@@ -10,9 +10,10 @@ import { AppointmentButton } from "../navButton/navButton";
 
 // import das bibliotecas
 import { Camera } from "expo-camera";
+import { Ionicons, Entypo } from "@expo/vector-icons";
 
 
-export const CancelAppointment = ({ hideModal = false, onPressCancel = null }) => {
+export const CancelAppointment = ({ hideModal = false, onPressCancel = null, onPress=null }) => {
 
 
     if (!hideModal) {
@@ -25,7 +26,7 @@ export const CancelAppointment = ({ hideModal = false, onPressCancel = null }) =
                 <ModalContainer>
                     <Mont20600>Cancelar consulta</Mont20600>
                     <Sand16500>Ao cancelar essa consulta, abrirá uma possível disponibilidade no seu horário, deseja mesmo cancelar essa consulta?</Sand16500>
-                    <Button onPress={onPressCancel}>
+                    <Button onPress={onPress}>
                         <ButtonTitle>CONFIRMAR</ButtonTitle>
                     </Button>
                     <LinkBlueSmall onPress={onPressCancel}>Cancelar</LinkBlueSmall>
@@ -201,9 +202,9 @@ export const ConfirmAppointment = ({ item, hideModal, setHideModal = null, navig
 
 
 
-export const CameraModal = ({ openModal, cameraRef }) => {
+export const CameraModal = ({ openModal, setOpenModal, cameraRef }) => {
 
-    
+
 
 
     return (
@@ -215,12 +216,14 @@ export const CameraModal = ({ openModal, cameraRef }) => {
             visible={openModal}>
             <Camera
                 type={Camera.Constants.Type.back}
-                style={{ width: "100%",flex:1 }}
+                style={{ width: "100%", height: "80%", flex: 1, position: "relative" }}
                 ratio={'16:9'}
-                ref={cameraRef}>
+                ref={cameraRef} />
+            <BottomRowButtonContainer>
+                <Entypo name="arrow-with-circle-left" size={48} color="white" onPress={()=> setOpenModal(false)} />
+                <Entypo name="circle" size={48} color="white" />
+            </BottomRowButtonContainer>
 
-
-            </Camera>
         </TrueModal>
     )
 }

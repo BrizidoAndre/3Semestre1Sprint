@@ -36,6 +36,8 @@ import { Main } from './src/screens/main/main';
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
 
+
+
 export default function App() {
 
   const [fontsLoaded, fontsError] = useFonts({
@@ -66,11 +68,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
 
 
-        <Stack.Screen
-          name='Appointment'
-          component={Appointment}
-          options={{ title: "Appointment" }}
-        />
+
 
         {/* tela Login */}
         <Stack.Screen
@@ -80,6 +78,12 @@ export default function App() {
           component={Login}
           // título da tela
           options={{ title: "Login" }} />
+
+        <Stack.Screen
+          name='Appointment'
+          component={Appointment}
+          options={{ title: "Appointment" }}
+        />
 
         {/* Tela main */}
         <Stack.Screen

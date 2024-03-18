@@ -15,6 +15,21 @@ import { ProduceDate } from "../../components/calendar/calendar"
 import { getToday } from "../../../Utils"
 import Stethoscope from "../../components/stethoscope/stethoscope"
 
+// importando biblioteca de notificação
+import * as Notifications from 'expo-notifications'
+
+// para configurar o comportamento das notificações
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        // para mostrar a notificação na tela
+        shouldShowAlert: true,
+        // configura o som das notificações
+        shouldPlaySound: true,
+        // configura o número de notificações no icon do app
+        shouldSetBadge: false,
+    }),
+})
+
 const Home = ({ navigation }) => {
 
     const rawData = [
@@ -104,8 +119,8 @@ const Home = ({ navigation }) => {
         {
             id: "imasdf",
             name: 'Dr. Claudio',
-            specialty:'Clínico Geral',
-            CRM:'15286',
+            specialty: 'Clínico Geral',
+            CRM: '15286',
             age: 22,
             image: image,
             nivel: 'Rotina',
@@ -116,8 +131,8 @@ const Home = ({ navigation }) => {
         {
             id: "imasdf",
             name: 'Dr. Claudio',
-            specialty:'Clínico Geral',
-            CRM:'15286',
+            specialty: 'Clínico Geral',
+            CRM: '15286',
             age: 22,
             image: image,
             nivel: 'Rotina',
@@ -128,8 +143,8 @@ const Home = ({ navigation }) => {
         {
             id: "imasdf",
             name: 'Dr. Claudio',
-            specialty:'Clínico Geral',
-            CRM:'15286',
+            specialty: 'Clínico Geral',
+            CRM: '15286',
             age: 22,
             image: image,
             nivel: 'Rotina',
@@ -140,7 +155,7 @@ const Home = ({ navigation }) => {
     ]
 
     //! VER SE O USUÁRIO É UM MÉDICO
-    const [isMedic, setIsMedic] = useState(false); 
+    const [isMedic, setIsMedic] = useState(false);
 
 
     // use states para os agendados realizado e cancelado
@@ -167,7 +182,7 @@ const Home = ({ navigation }) => {
     // Dados mocados para teste do flatlist
     // Dador mocados para mostragem do perfil
     const profile = {
-        name:'Richard Rasmusse'
+        name: 'Richard Rasmusse'
     }
 
     // função de filtragem dos dados 
@@ -184,15 +199,15 @@ const Home = ({ navigation }) => {
     }
 
     const verifyMedic = () => {
-        if(isMedic){
+        if (isMedic) {
             return rawData.filter(checkStatus)
         }
-        else{
+        else {
             return rawDataMedic.filter(checkStatus)
         }
     }
 
-    //? AQUI ESTÁ A DATA
+    //? AQUI ESTÁ OS DADOS
     const data = verifyMedic();
 
 
@@ -209,17 +224,40 @@ const Home = ({ navigation }) => {
     }
 
     const showRightCardModal = (item) => {
-        if(item.status === 'a' && !isMedic){
-            setModal({doctorAppointment:true})
+        if (item.status === 'a' && !isMedic) {
+            setModal({ doctorAppointment: true })
             setObjModalRecord(item)
-        } else if(item.status === 'r' && !isMedic){
+        } else if (item.status === 'r' && !isMedic) {
             navigation.navigate("Appointment")
-        } else if(item.status === 'a' && isMedic){
+        } else if (item.status === 'a' && isMedic) {
             setModal({ record: true })
             setObjModalRecord(item)
         }
     }
 
+    // função para verificar se o usuário deu permissões para usar notificações
+    async function verifyStatus() {
+        const { status } = await Notifications.getPermissionsAsync();
+
+        if (status !== 'granted') {
+            Notifications.requestPermissionsAsync();
+        }
+    }
+
+    // função para criar a notificação de cancelar
+    async function notificationCancel() {
+        await Notifications.scheduleNotificationAsync({
+            content: {
+                title: "Consulta cancelada",
+                body: 'Sua consulta foi certamente cancelada',
+            },
+            trigger: null
+        })
+    }
+
+    useEffect(() => {
+        verifyStatus()
+    }, [])
 
 
 
@@ -299,11 +337,12 @@ const Home = ({ navigation }) => {
                         time={item.time}
                         nivel={item.nivel}
                         onPress={() => showRightModal(item)}
-                        onPressCard={() => showRightCardModal(item) } />} />
+                        onPressCard={() => showRightCardModal(item)} />} />
 
             <CancelAppointment
                 hideModal={modal.cancel}
                 onPressCancel={() => setModal({ cancel: false })}
+                onPress={() => {notificationCancel(); setModal({ cancel: false})}}
             />
 
             <ShowRecord
@@ -320,13 +359,13 @@ const Home = ({ navigation }) => {
 
             <DoctorAppointment
                 hideModal={modal.doctorAppointment}
-                item={ objModalRecord}
-                onPressCancel={()=> setModal({doctorAppointment:false})}
-                onPressNavigate={()=> navigation.navigate('ShowLocation')}
+                item={objModalRecord}
+                onPressCancel={() => setModal({ doctorAppointment: false })}
+                onPressNavigate={() => navigation.navigate('ShowLocation')}
             />
 
-            {isMedic ? <></>: <Stethoscope onPress={() => setModal({ setAppointment: true })} /> }
-            
+            {isMedic ? <></> : <Stethoscope onPress={() => setModal({ setAppointment: true })} />}
+
 
         </>
     )
