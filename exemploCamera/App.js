@@ -109,7 +109,6 @@ export default function App() {
 
   async function savePhoto() {
     if (photo) {
-
       await MediaLibrary.createAssetAsync(photo)
         .then(() => {
           Alert.alert('Sucesso', 'Foto salva na galeria')

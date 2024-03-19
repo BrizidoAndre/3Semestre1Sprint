@@ -202,7 +202,7 @@ export const ConfirmAppointment = ({ item, hideModal, setHideModal = null, navig
 
 
 
-export const CameraModal = ({ openModal, setOpenModal, cameraRef }) => {
+export const CameraModal = ({ openModal, setOpenModal, cameraRef, capturePhoto }) => {
 
 
 
@@ -221,7 +221,7 @@ export const CameraModal = ({ openModal, setOpenModal, cameraRef }) => {
                 ref={cameraRef} />
             <BottomRowButtonContainer>
                 <Entypo name="arrow-with-circle-left" size={48} color="white" onPress={()=> setOpenModal(false)} />
-                <Entypo name="circle" size={48} color="white" />
+                <Entypo name="circle" size={48} color="white" onPress={() => capturePhoto()} />
             </BottomRowButtonContainer>
 
         </TrueModal>

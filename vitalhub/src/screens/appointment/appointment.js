@@ -41,9 +41,19 @@ const Appointment = ({ navigation, medic = true }) => {
     async function capturePhoto(){
         if(cameraRef){
             const image = await cameraRef.current.takePictureAsync();
+
+            console.log(image.uri);
             setPhoto(image.uri)
             setOpenModal(true)
         }
+
+        // if(photo){
+        //     await MediaLibrary.createAssetAsync(photo)
+        // }
+    }
+
+    async function savePhoto(){
+        
     }
 
 
@@ -118,7 +128,7 @@ const Appointment = ({ navigation, medic = true }) => {
                     </ScrollViewProfile>
 
 
-                    <CameraModal openModal={openModal} setOpenModal={setOpenModal} cameraRef={cameraRef} />
+                    <CameraModal openModal={openModal} setOpenModal={setOpenModal} cameraRef={cameraRef} capturePhoto={() => capturePhoto()} />
                 </>
                 :
                 <>

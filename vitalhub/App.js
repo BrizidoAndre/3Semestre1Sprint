@@ -69,6 +69,11 @@ export default function App() {
 
 
 
+      <Stack.Screen
+          name='Appointment'
+          component={Appointment}
+          options={{ title: "Appointment" }}
+        />
 
         {/* tela Login */}
         <Stack.Screen
@@ -79,11 +84,6 @@ export default function App() {
           // título da tela
           options={{ title: "Login" }} />
 
-        <Stack.Screen
-          name='Appointment'
-          component={Appointment}
-          options={{ title: "Appointment" }}
-        />
 
         {/* Tela main */}
         <Stack.Screen
