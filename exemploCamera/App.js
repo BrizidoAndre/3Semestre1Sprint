@@ -10,20 +10,27 @@ export default function App() {
   // Use states para o uso camera
   const cameraRef = useRef(null)
   const [photo, setPhoto] = useState(null)
+  // Use state do tipo da camera
+  const [camera, setCamera] = useState(Camera.Constants.Type.back)
+  // Use state do modal
   const [openModal, setOpenModal] = useState(false)
+
+
+
+
+
+
+
   // Use states para o flash
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off)
   const [flashBoll, setFlashBoll] = useState(false)
   // Use states para o focus
   const [focus, setFocus] = useState(Camera.Constants.AutoFocus.on)
   const [focusBoll, setFocusBoll] = useState(true)
-
   // Use state para ver a gravação em andamento
   const [record, setRecord] = useState(false)
   const [video, setVideo] = useState(null)
 
-  // Use state do tipo da camera
-  const [camera, setCamera] = useState(Camera.Constants.Type.back)
 
 
 
@@ -59,14 +66,6 @@ export default function App() {
     }
   }
 
-  async function CapturePhoto() {
-    if (cameraRef) {
-      const photo = await cameraRef.current.takePictureAsync();
-
-      setPhoto(photo.uri)
-      setOpenModal(true)
-    }
-  }
 
   async function clearPhoto() {
 
@@ -107,6 +106,15 @@ export default function App() {
   }
 
 
+  async function CapturePhoto() {
+    if (cameraRef) {
+      const photo = await cameraRef.current.takePictureAsync();
+
+      setPhoto(photo.uri)
+      setOpenModal(true)
+    }
+  }
+
   async function savePhoto() {
     if (photo) {
       await MediaLibrary.createAssetAsync(photo)
@@ -121,26 +129,18 @@ export default function App() {
   }
 
 
-  /**
-    quando salvar a foto - poder apagar da galeria ---FEITO
-    botão para ativar o flash --- FEITO
-    forma de recarregar o autofocus --- 
-    * Aplicando o vídeo no projeto ---FEITO ?
-    */
-
-
   useEffect(() => {
     (async () => {
       const { status: cameraStatus } = await Camera.requestCameraPermissionsAsync();
 
+      const { status: mediaStatus } = await MediaLibrary.requestPermissionsAsync();
+
       const { status: microphoneStatus } = await Camera.requestMicrophonePermissionsAsync();
 
-      const { status: mediaStatus } = await MediaLibrary.requestPermissionsAsync()
     })()
 
     // Condicional para cada vez que um vídeo for realizado salvar na media
     if (video) {
-
       MediaLibrary.createAssetAsync(video)
         .then(() => {
           Alert.alert('Sucesso', 'Video salvo na galeria')
@@ -149,8 +149,6 @@ export default function App() {
           alert("Erro ao processar foto")
         })
     }
-
-
   }, [video])
 
 
@@ -164,6 +162,7 @@ export default function App() {
         style={styles.camera}
         ratio={'16:9'}
         ref={cameraRef}
+        
         flashMode={flash}
         autoFocus={focus}
       >
