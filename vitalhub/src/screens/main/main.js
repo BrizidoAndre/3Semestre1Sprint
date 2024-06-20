@@ -24,6 +24,7 @@ export const Main = () => {
                 tabBarActiveBackgroundColor: 'transparent',
                 tabBarShowLabel: false,
                 headerShown: false,
+                
 
                 tabBarIcon: ({ focused }) => {
                     if (route.name === 'Home') {

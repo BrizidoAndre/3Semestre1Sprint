@@ -32,6 +32,7 @@ import SelectMedic from './src/screens/selectMedic/selectMedic';
 import SelectData from './src/screens/selectData/selectData';
 import ShowLocation from './src/screens/showLocation/showLocation';
 import { Main } from './src/screens/main/main';
+import styled from 'styled-components';
 
 // instância do Stack Navigator
 const Stack = createNativeStackNavigator();
@@ -65,7 +66,7 @@ export default function App() {
 
     <NavigationContainer>
       {/* componente para navegação */}
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false,  }}>
 
 
 
